@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-shell',
@@ -10,13 +10,11 @@ export class ShellComponent implements OnInit {
   showHead: boolean = false;
   constructor(private router: Router) {
     router.events.forEach((event) => {
-      if (event instanceof NavigationStart) {
-        if (event['url'] == '/login') {
+      if (event instanceof NavigationEnd) {
+        if (event['url'] == '/login' || event['url'] == '/register' || event['url'] == '/password') {
           this.showHead = false;
-        } else if (event['url'] == '/register') {
-          // console.log("NU")
-          this.showHead = false;
-        } else if (event['url'] == '/password') {
+        } else {
+          this.showHead = true;
         }
       }
     });
