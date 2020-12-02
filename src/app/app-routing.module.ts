@@ -6,10 +6,11 @@ const routes: Routes = [
   Shell.childRoutes([{ path: 'about', loadChildren: () => import('./about/about.module').then((m) => m.AboutModule) }]),
   Shell.childRoutes([{ path: 'profile', loadChildren: () => import('./profile/profile.module').then((m) => m.ProfileModule) }]),
   Shell.childRoutes([{ path: 'lomba', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) }]),
+  Shell.childRoutes([{ path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) }]),
   Shell.childRoutes([{ path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) }]),
   Shell.childRoutes([{ path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) }]),
   Shell.childRoutes([{ path: 'password', loadChildren: () => import('./password/password.module').then((m) => m.PasswordModule) }]),
-  Shell.childRoutes([{ path: 'new', loadChildren: () => import('./new/new.module').then((m) => m.NewModule) }]),
+  Shell.childRoutes([{ path: 'change_password', loadChildren: () => import('./change_password/change_password.module').then((m) => m.Change_PasswordModule) }]),
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
-import Swal from 'sweetalert2';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,11 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   active = 1;
   public loginConnect: any = {};
-  constructor(public loginservice: LoginService, public router: Router) {}
+
+  constructor(
+    public loginservice: LoginService, 
+    public router: Router 
+    ) {}
 
   ngOnInit() {}
 

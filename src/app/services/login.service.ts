@@ -13,7 +13,10 @@ const httpConnect = {
 })
 export class LoginService {
   endpoint: any = 'https://backendsfinal.herokuapp.com';
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+  ) {}
 
   login(data: any): Observable<any> {
     return this.http.post(`${this.endpoint}/api/master/login`, data, httpConnect).pipe(

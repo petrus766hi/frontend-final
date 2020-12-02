@@ -1,21 +1,21 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewComponent } from './new.component';
+import { ListLombaComponent } from './listlomba.component';
 
-describe('NewComponent', () => {
-  let component: NewComponent;
-  let fixture: ComponentFixture<NewComponent>;
+describe('ListLombaComponent', () => {
+  let component: ListLombaComponent;
+  let fixture: ComponentFixture<ListLombaComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [NewComponent],
+        declarations: [ListLombaComponent],
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewComponent);
+    fixture = TestBed.createComponent(ListLombaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
