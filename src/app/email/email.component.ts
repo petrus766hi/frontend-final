@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 
 @Component({
-  selector: 'app-change_password',
-  templateUrl: './change_password.component.html',
-  styleUrls: ['./change_password.component.scss'],
+  selector: 'app-email',
+  templateUrl: './email.component.html',
+  styleUrls: ['./email.component.scss'],
 })
-export class Change_PasswordComponent implements OnInit {
+export class EmailComponent implements OnInit {
   version: string | null = environment.version;
 
   constructor() {}

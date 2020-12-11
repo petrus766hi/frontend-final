@@ -5,10 +5,6 @@ import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
-const httpConnect = {
-  headers: new HttpHeaders({'Content Type': 'application/json'}),
-};
-
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +16,8 @@ export class RegisterService {
   ) { }
 
   register(data: any): Observable<any> {
-    return this.http.post(`${this.endpoint}/api/master/register`, data, httpConnect).pipe(
+    console.log('data', data)
+    return this.http.post(`${this.endpoint}/api/peserta/register`, data).pipe(
         map((body: any) => body),
         catchError((err) => of(err))
     )

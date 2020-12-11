@@ -11,7 +11,7 @@ export class ShellComponent implements OnInit {
   constructor(private router: Router) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
-        if (event['url'] == '/login' || event['url'] == '/register' || event['url'] == '/password') {
+        if (event['url'] == '/login' || event['url'] == '/register' || event['url'] == '/password' ||  event['url'] == '/change_password' ||  event['url'] == '/change_pwd' ||  event['url'] == '/profile_update') {
           this.showHead = false;
         } else {
           this.showHead = true;

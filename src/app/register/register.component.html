@@ -10,22 +10,32 @@
               <form action="index.html">
                 <div class="form-group">
                   <label for="username">Username</label>
-                  <input name="username" type="text" [(ngModel)]="registerConnect.username" class="form-control">
+                  <input name="username" type="text" [(ngModel)]="registerConnect.username" class="form-control" required >
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input name="password" type="password" [(ngModel)]="registerConnect.password" class="form-control">
+                  <input name="password" type="password" [(ngModel)]="registerConnect.password" class="form-control" required >
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input name="email" type="text" [(ngModel)]="registerConnect.email" class="form-control">
+                  <input name="email" type="text" [(ngModel)]="registerConnect.email" class="form-control" required >
                 </div>
                 <div class="form-group">
-                  <label for="subDistirict">Kecamatan</label>
-                  <input name="kecamatan" type="text" [(ngModel)]="registerConnect.kecamatan" class="form-control">
+                  <label for="birthdate">Tanggal Lahir</label>
+                  <input name="birthdate" [(ngModel)]="registerConnect.birthdate" placeholder="Selected date" type="date" id="date-picker" class="form-control datepicker">
                 </div>
-                  
-                <input type="submit" value="Submit" (click)="register()" class="btn btn-dark btn-block">
+                <div class="form-group">
+                  <label for="phoneNumber">Nomor Handphone</label>
+                  <input name="phoneNumber" type="text" [(ngModel)]="registerConnect.phoneNumber" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputState">Role</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Pilih</option>
+                    <option name="roles" [(ngModel)]="registerConnect.roles" value="peserta">Peserta</option>
+                  </select>
+                </div>
+                <input class="btn-dark" type="submit" value="Submit" (click)="register()" >
               </form>
             </div>
           </div>

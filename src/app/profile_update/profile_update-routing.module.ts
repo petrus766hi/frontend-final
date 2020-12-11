@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { marker } from '@biesbjerg/ngx-translate-extract-marker';
 
-import { Change_PasswordComponent } from './change_password.component';
+import { Profile_UpdateComponent } from './profile_update.component';
 
 const routes: Routes = [
   // Module is lazy loaded, see app-routing.module.ts
-  { path: '', component: Change_PasswordComponent, data: { title: marker('Change_Password') } },
+  { path: '', component: Profile_UpdateComponent, data: { title: marker('Profile_Update') } },
 ];
 
 @NgModule({
@@ -14,4 +14,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [],
 })
-export class Change_PasswordRoutingModule {}
+export class Profile_UpdateRoutingModule {}

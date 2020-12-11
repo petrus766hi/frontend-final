@@ -12,6 +12,8 @@
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 @import "~@fortawesome/fontawesome-free/scss/regular.scss";
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
 
 // Theme customization
 @import "theme/theme";
