@@ -6,9 +6,10 @@ import { SharedModule } from '@shared';
 import { LombaRoutingModule } from './lomba-routing.module';
 import { LombaComponent } from './lomba.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BracketComponent } from './bracket/bracket.component';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, LombaRoutingModule, NgbModule, SharedModule],
-  declarations: [LombaComponent],
+  declarations: [LombaComponent, BracketComponent],
 })
 export class LombaModule {}
