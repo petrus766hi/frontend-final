@@ -19,7 +19,6 @@ import { RegisterModule } from './register/register.module';
 import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BracketComponent } from './bracket/bracket.component';
 
 @NgModule({
   imports: [
@@ -41,7 +40,7 @@ import { BracketComponent } from './bracket/bracket.component';
     BsDropdownModule.forRoot(),
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
   ],
-  declarations: [AppComponent, BracketComponent],
+  declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
