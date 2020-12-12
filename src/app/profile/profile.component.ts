@@ -26,9 +26,16 @@ export class ProfileComponent implements OnInit {
     this.userProfile()
   }
 
+<<<<<<< HEAD
   userProfile(){
     this.profileservice.getProfile(this.id).subscribe((response: any) => {
       this.profiles = response.data
     })
+=======
+  userProfile() {
+    this.profileservice.getProfile(this.inputProfile, this.id).subscribe((response: any) => {
+      console.log('mmmmmmmm', response);
+    });
+>>>>>>> 8a1bcace4b931956610eadf79691d349deefb6df
   }
 }

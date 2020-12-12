@@ -9,21 +9,26 @@ import * as alertyfy from 'alertifyjs';
 })
 export class HeaderComponent implements OnInit {
   menuHidden = true;
-  
-  logginUser: string
-  constructor(
-    public router: Router,
-  ) {}
+  isShow: boolean;
+  logginUser: string;
+  constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const role: any = localStorage.getItem('role');
+    if (role === 'peserta') {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
   }
 
   loggin() {
-     this.logginUser = localStorage.getItem('token');
-     return this.logginUser
+    this.logginUser = localStorage.getItem('token');
+    return this.logginUser;
   }
 
   onLogout() {

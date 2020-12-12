@@ -11,15 +11,11 @@ import * as alertyfy from 'alertifyjs';
 })
 export class Profile_UpdateComponent implements OnInit {
   version: string | null = environment.version;
-  
-  public editProfile: any = {}
-  id: any =''
-  constructor(
-    public profileupdateservice: ProfileUpdateService,
-    private router: ActivatedRoute,
-    public route: Router,
-  ) {
-    this.id =  localStorage.getItem('id')
+
+  public editProfile: any = {};
+  id: any = '';
+  constructor(public profileupdateservice: ProfileUpdateService, private router: ActivatedRoute, public route: Router) {
+    this.id = localStorage.getItem('id');
   }
 
   ngOnInit() {}

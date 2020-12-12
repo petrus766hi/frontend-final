@@ -4,10 +4,19 @@ import { Shell } from '@app/shell/shell.service';
 
 const routes: Routes = [
   Shell.childRoutes([{ path: 'about', loadChildren: () => import('./about/about.module').then((m) => m.AboutModule) }]),
-  Shell.childRoutes([{ path: 'profile', loadChildren: () => import('./profile/profile.module').then((m) => m.ProfileModule) }]),
-  Shell.childRoutes([{ path: 'profile_update', loadChildren: () => import('./profile_update/profile_update.module').then((m) => m.Profile_UpdateModule) }]),
+  Shell.childRoutes([
+    { path: 'profile', loadChildren: () => import('./profile/profile.module').then((m) => m.ProfileModule) },
+  ]),
+  Shell.childRoutes([
+    {
+      path: 'profile_update',
+      loadChildren: () => import('./profile_update/profile_update.module').then((m) => m.Profile_UpdateModule),
+    },
+  ]),
   Shell.childRoutes([{ path: 'lomba', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) }]),
-  Shell.childRoutes([{ path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) }]),
+  Shell.childRoutes([
+    { path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) },
+  ]),
   Shell.childRoutes([{ path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) }]),
   Shell.childRoutes([{ path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) }]),
   Shell.childRoutes([{ path: 'change_pwd', loadChildren: () => import('./change_pwd/change_pwd.module').then((m) => m.Change_PwdModule) }]),

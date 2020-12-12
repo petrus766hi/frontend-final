@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PasswordService } from '../services/password.service'
+import { PasswordService } from '../services/password.service';
 import { environment } from '@env/environment';
 import { not } from '@angular/compiler/src/output/output_ast';
 
@@ -13,17 +13,11 @@ export class PasswordComponent implements OnInit {
   version: string | null = environment.version;
   public inputEmail: any = {};
 
-  constructor(
-    public router: Router,
-    public passwordservice: PasswordService,
-  ) {}
+  constructor(public router: Router, public passwordservice: PasswordService) {}
 
   ngOnInit() {}
 
-  forgotPassword(){
-    this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {
-     
-    })
+  forgotPassword() {
+    this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {});
   }
-
 }

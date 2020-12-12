@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileService {
   endpoint: any = 'https://backendsfinal.herokuapp.com';

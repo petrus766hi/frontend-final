@@ -14,12 +14,12 @@ export class Reset_PasswordComponent implements OnInit {
   version: string | null = environment.version;
   public inputPwd: any = {
     password: '',
-    token: this.router.snapshot.params.id
+    token: this.router.snapshot.params.id,
   };
   constructor(
     public route: Router,
     private router: ActivatedRoute,
-    public resetpasswordservice: ResetPasswordService,
+    public resetpasswordservice: ResetPasswordService
   ) {}
 
   ngOnInit() {}

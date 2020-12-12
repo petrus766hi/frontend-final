@@ -9,14 +9,11 @@ const httpConnect = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PasswordService {
   endpoint: any = 'https://backendsfinal.herokuapp.com';
-  constructor(
-    private router: Router,
-    private http: HttpClient,
-  ) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   passwordForget(data: any): Observable<any> {
     return this.http.put(`${this.endpoint}/api/peserta/forgotpassword`, data).pipe(
@@ -24,5 +21,4 @@ export class PasswordService {
       catchError((err) => of(err))
     );
   }
-
 }
