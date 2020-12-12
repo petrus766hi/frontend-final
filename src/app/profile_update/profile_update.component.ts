@@ -11,24 +11,20 @@ import * as alertyfy from 'alertifyjs';
 })
 export class Profile_UpdateComponent implements OnInit {
   version: string | null = environment.version;
-  
-  public editProfile: any = {}
-  id: any =''
-  constructor(
-    public profileupdateservice: ProfileUpdateService,
-    private router: ActivatedRoute,
-    public route: Router,
-  ) {
-    this.id =  localStorage.getItem('id')
+
+  public editProfile: any = {};
+  id: any = '';
+  constructor(public profileupdateservice: ProfileUpdateService, private router: ActivatedRoute, public route: Router) {
+    this.id = localStorage.getItem('id');
   }
 
   ngOnInit() {}
 
   updateProfile() {
     this.profileupdateservice.inputProfile(this.editProfile, this.id).subscribe((response: any) => {
-      console.log('zzzzzzz', response)
+      console.log('zzzzzzz', response);
       alertyfy.success('Berhasil Update Profile');
       this.route.navigate(['profile']);
-    })
+    });
   }
 }

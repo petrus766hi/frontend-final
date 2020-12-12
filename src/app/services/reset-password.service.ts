@@ -5,20 +5,16 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResetPasswordService {
   endpoint: any = 'https://backendsfinal.herokuapp.com';
-  constructor(
-    private router: Router,
-    private http: HttpClient,
-  ) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
   passwordInput(data: any): Observable<any> {
     return this.http.put(`${this.endpoint}/api/peserta/resetpassword`, data).pipe(
       map((body: any) => body),
-      catchError((err) => of(err)),
+      catchError((err) => of(err))
     );
   }
-
 }

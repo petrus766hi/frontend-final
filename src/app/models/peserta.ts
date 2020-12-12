@@ -1,10 +1,9 @@
-import { ReadonlyESMap } from "typescript";
+import { ReadonlyESMap } from 'typescript';
 
 export class Peserta {
-    username: string;
-    password:  string;
-    email: string;
-    birdthdate: number;
-    phoneNumber: number;
-    
-  }
+  username: string;
+  password: string;
+  email: string;
+  birdthdate: number;
+  phoneNumber: number;
+}

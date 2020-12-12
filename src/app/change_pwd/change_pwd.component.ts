@@ -15,14 +15,11 @@ export class Change_PwdComponent implements OnInit {
   public inputPassword: any = {
     password: '',
     token: localStorage.getItem('token'),
-    email: localStorage.getItem('email')
+    email: localStorage.getItem('email'),
   };
-  constructor(
-    public route: Router,
-    public changepwdservice: ChangePwdService,
-  ) {}
+  constructor(public route: Router, public changepwdservice: ChangePwdService) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   changePassword() {
     // if( this.inputPassword.password == "" || this.inputPassword.confirmpassword == ""){
@@ -33,33 +30,32 @@ export class Change_PwdComponent implements OnInit {
     //     footer: '<a href>Why do I have this issue?</a>',
     //   });
     // }else{
-      // this.changepwdservice.pwdInput(this.inputPassword).subscribe((response: any) => {
-      //   console.log('xxx', this.inputPassword)
-        // if(response.status) {
-        //   this.route.navigate(['profile']);
-        // } else {
-        //   Swal.fire({
-        //     icon: 'error',
-        //     title: 'Oops...',
-        //     text: 'Gagal Merubah Password',
-        //     footer: '<a href>Why do I have this issue?</a>',
-        //   }); 
-        // }
-      // })
+    // this.changepwdservice.pwdInput(this.inputPassword).subscribe((response: any) => {
+    //   console.log('xxx', this.inputPassword)
+    // if(response.status) {
+    //   this.route.navigate(['profile']);
+    // } else {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Oops...',
+    //     text: 'Gagal Merubah Password',
+    //     footer: '<a href>Why do I have this issue?</a>',
+    //   });
     // }
-    
-    if ( this.inputPassword.password == "" || this.inputPassword.confirmpassword == "") {
-      console.log('xxx', this.inputPassword)
-          alertyfy.error('Password tidak boleh kosong')
-    } else if ( this.inputPassword.password !== "" || this.inputPassword.confirmpassword !== "") {
-          alertyfy.error('Password tidak sama')
+    // })
+    // }
+
+    if (this.inputPassword.password == '' || this.inputPassword.confirmpassword == '') {
+      console.log('xxx', this.inputPassword);
+      alertyfy.error('Password tidak boleh kosong');
+    } else if (this.inputPassword.password !== '' || this.inputPassword.confirmpassword !== '') {
+      alertyfy.error('Password tidak sama');
     } else {
       this.changepwdservice.pwdInput(this.inputPassword).subscribe((response: any) => {
-        if(response.status){
+        if (response.status) {
           this.route.navigate(['profile']);
         }
-      })
+      });
     }
   }
-
 }

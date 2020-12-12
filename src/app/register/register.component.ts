@@ -13,20 +13,17 @@ import * as alertyfy from 'alertifyjs';
 export class RegisterComponent implements OnInit {
   version: string | null = environment.version;
   isLoading = false;
-  active = 1; 
-  public registerConnect: any = {}
-  private peserta:Peserta;
+  active = 1;
+  public registerConnect: any = {};
+  private peserta: Peserta;
 
-  constructor(
-    public registerservice: RegisterService,
-    public router: Router,
-    ) {}
+  constructor(public registerservice: RegisterService, public router: Router) {}
 
-  ngOnInit() { }
-  
-  register(){
-    this.registerservice.register(this.registerConnect).subscribe((response : any ) => {
-      if(response.success){
+  ngOnInit() {}
+
+  register() {
+    this.registerservice.register(this.registerConnect).subscribe((response: any) => {
+      if (response.success) {
         alertyfy.success('Register Berhasil');
         this.router.navigate(['login']);
       } else {
@@ -34,5 +31,4 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
-
 }

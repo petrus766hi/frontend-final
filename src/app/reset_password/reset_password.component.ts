@@ -13,19 +13,19 @@ export class Reset_PasswordComponent implements OnInit {
   version: string | null = environment.version;
   public inputPwd: any = {
     password: '',
-    token: this.router.snapshot.params.id
+    token: this.router.snapshot.params.id,
   };
   constructor(
     public route: Router,
     private router: ActivatedRoute,
-    public resetpasswordservice: ResetPasswordService,
+    public resetpasswordservice: ResetPasswordService
   ) {}
 
   ngOnInit() {}
 
   resetPassword() {
     this.resetpasswordservice.passwordInput(this.inputPwd).subscribe((response: any) => {
-      if(response.status) {
+      if (response.status) {
         this.route.navigate(['login']);
       } else {
         Swal.fire({
@@ -35,6 +35,6 @@ export class Reset_PasswordComponent implements OnInit {
           footer: '<a href>Why do I have this issue?</a>',
         });
       }
-    })
+    });
   }
 }
