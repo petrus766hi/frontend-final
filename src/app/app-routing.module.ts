@@ -21,7 +21,6 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: 'register', loadChildren: () => import('./register/register.module').then((m) => m.RegisterModule) },
   ]),
-  Shell.childRoutes([{ path: 'email', loadChildren: () => import('./email/email.module').then((m) => m.EmailModule) }]),
   Shell.childRoutes([
     {
       path: 'change_pwd',

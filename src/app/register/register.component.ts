@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
 import { environment } from '@env/environment';
-import { Peserta } from '../models/peserta';
 import * as alertyfy from 'alertifyjs';
 
 @Component({
@@ -15,7 +14,6 @@ export class RegisterComponent implements OnInit {
   isLoading = false;
   active = 1;
   public registerConnect: any = {};
-  private peserta: Peserta;
 
   constructor(public registerservice: RegisterService, public router: Router) {}
 

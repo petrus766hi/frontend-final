@@ -12,7 +12,7 @@ import { Profile } from '../models/profile';
 export class ProfileComponent implements OnInit {
   version: string | null = environment.version;
 
-  public inputProfile: any = {};
+  profiles: any = Profile;
   id: any = '';
   constructor(public profileservice: ProfileService, private router: ActivatedRoute, public route: Router) {
     this.id = localStorage.getItem('id');
@@ -21,8 +21,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {}
 
   userProfile() {
-    this.profileservice.getProfile(this.inputProfile, this.id).subscribe((response: any) => {
-      console.log('mmmmmmmm', response);
+    this.profileservice.getProfile(this.id).subscribe((response: any) => {
+      this.profiles = response.data;
+      console.log('>>>>>>>>>>>', response);
     });
   }
 }
