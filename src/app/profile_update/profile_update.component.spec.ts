@@ -1,21 +1,21 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewComponent } from './new.component';
+import { Profile_UpdateComponent } from './profile_update.component';
 
-describe('NewComponent', () => {
-  let component: NewComponent;
-  let fixture: ComponentFixture<NewComponent>;
+describe('Profile_UpdateComponent', () => {
+  let component: Profile_UpdateComponent;
+  let fixture: ComponentFixture<Profile_UpdateComponent>;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [NewComponent],
+        declarations: [Profile_UpdateComponent],
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewComponent);
+    fixture = TestBed.createComponent(Profile_UpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

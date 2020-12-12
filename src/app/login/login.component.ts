@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
+import * as alertyfy from 'alertifyjs';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   active = 1;
   public loginConnect: any = {};
+
   constructor(public loginservice: LoginService, public router: Router) {}
 
   ngOnInit() {}
@@ -23,17 +25,19 @@ export class LoginComponent implements OnInit {
       if (response.success) {
         localStorage.setItem('token', response.tokens);
         localStorage.setItem('role', response.data.role);
+        localStorage.setItem('email', response.data.email);
+        localStorage.setItem('id', response.data._id);
         Swal.fire({
           icon: 'success',
           title: 'Berhasil Login',
           text: 'Selamat Datang' + ' ' + response.data.username,
         });
-        if (response.data.role !== 'panitia') {
+        if (response.data.role == 'peserta') {
           this.router.navigate(['home']);
         } else {
           Swal.fire({
             icon: 'success',
-            title: 'Berhasil Login Anda Adalah Panitia',
+            title: 'Berhasil Login Anda Adalah Peserta',
             text: 'Selamat Datang' + ' ' + response.data.role,
           });
         }

@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-    <a class="navbar-brand" routerLink="/home">Lomba 17 Agustus</a>
+    <a class="navbar-brand" routerLink="/home">LOMBA 17 AGUSTUS</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,17 +13,17 @@
     </button>
     <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
       <div class="navbar-nav">
-        <a class="nav-item nav-link text-uppercase" routerLink="/home" routerLinkActive="active">
+        <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">
           <i class="fas fa-home"></i>
           <span translate>Home</span>
         </a>
-        <a class="nav-item nav-link text-uppercase" routerLink="/about" routerLinkActive="active">
-          <i class="fas fa-question-circle"></i>
-          <span translate>ABOUT</span>
+        <a class="nav-item nav-link" routerLink="/about" routerLinkActive="active">
+          <i class="fas fa-archive"></i>
+          <span translate>About</span>
         </a>
-        <a class="nav-item nav-link text-uppercase" routerLink="/lomba" routerLinkActive="active">
-          <i class="fas fa-lomba"></i>
-          <span translate>LOMBA</span>
+        <a class="nav-item nav-link" routerLink="/listlomba" routerLinkActive="active">
+          <i class="fas fa-trophy"></i>
+          <span translate>Lomba</span>
         </a>
       </div>
       <div class="navbar-nav ml-auto">
@@ -32,9 +32,27 @@
             <img src="https://www.flaticon.com/premium-icon/icons/svg/668/668709.svg" width="30" height="30" />
           </a>
         </li>
-        <li class="nav-item nav-link text-uppercase">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+        <li *ngIf="!loggin()" class="nav-item nav-link">
+          <button type="button" routerLink="/login" class="btn btn-outline-dark">Login</button>
         </li>
+
+        <li *ngIf="loggin()" class="nav-item nav-link">
+          <button type="button" (click)="onLogout()" class="btn btn-outline-dark">Logout</button>
+        </li>
+
+        <!-- <div *ngIf="loggin()" class="dropdown mr-5" dropdown>
+         <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
+           Welcome
+         </a>
+         <div class="dropdown-menu" *dropdownMenu>
+           <a href="#" class="dropdown-item">
+             <i class="fas fa-tachometer-alt"></i>My Profile</a>
+           <a href="#" class="dropdown-item">
+              <i class="fas fa-user-circle"></i>Change Password</a>
+           <a (click)="onLogout()" class="dropdown-item">
+              <i *ngIf="loggin()" class="fas fa-sign-out"></i>Logout</a>
+         </div>
+       </div> -->
       </div>
     </div>
   </nav>

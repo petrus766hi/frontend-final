@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as alertyfy from 'alertifyjs';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   menuHidden = true;
-  public isShow: boolean = false;
+  isShow: boolean;
+  logginUser: string;
   constructor() {}
 
   ngOnInit() {
@@ -21,5 +23,15 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
+  }
+
+  loggin() {
+    this.logginUser = localStorage.getItem('token');
+    return this.logginUser;
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    alertyfy.success('Anda Telah Logout');
   }
 }
