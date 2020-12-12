@@ -3,6 +3,13 @@
     <div class="row">
       <div class="col-md-6 ml-auto">
         <div class="input-group">
+          <div class="form-group">
+            <select id="inputState" class="form-control">
+              <option selected>Pilih</option>
+              <option name="roles" value="-1">Aktif</option>
+              <option name="roles" value="1">Tidak Aktif</option>
+            </select>
+          </div>
           <input type="text" class="form-control" placeholder="Cari Perlombaan" />
           <div class="input-group-append">
             <button class="btn btn-danger">Cari</button>
@@ -19,7 +26,10 @@
         <div class="jenisLomba">
           <h5 class="title text-center">Perlombaan</h5>
           <div class="row">
-            <div class="col-lg-4 col-md-6 mb-5">
+            <div
+              class="col-md-4 mb-5"
+              *ngFor="let turnament of tournaments | slice: (page - 1) * pageSize:page * pageSize"
+            >
               <div class="card h-100">
                 <img
                   class="card-img-top"
@@ -27,11 +37,18 @@
                   alt="gambar lomba"
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <h5 class="card-title">{{ turnament.NamaTournament }}</h5>
                   <p class="card-text">
                     Some quick example text to build on the card title and make up the bulk of the card's content.
                   </p>
+                  <<<<<<< HEAD
                   <a routerLink="/lomba" class="btn btn-primary">Daftar</a>
+                  =======
+                  <p class="card-text">Area : {{ turnament.SubDistrict }}</p>
+                  <p class="card-text">Status : {{ turnament.Is_active }}</p>
+                  <p class="card-text">Jumlah Peserta : {{ turnament.JumlahPeserta }}</p>
+                  <a href="#" class="btn btn-primary">Detail Lomba </a>
+                  >>>>>>> 6692fe8555e5c743f419c8f4ca6e476b5976cbf6
                 </div>
               </div>
             </div>
@@ -41,3 +58,11 @@
     </div>
   </div>
 </section>
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [collectionSize]="tournaments.length"
+  (pageChange)="pageChanged($event)"
+></ngb-pagination>
+<pre>Current page: {{ page }}</pre>
