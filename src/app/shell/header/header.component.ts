@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as alertyfy from 'alertifyjs';
 
 @Component({
@@ -10,7 +11,9 @@ export class HeaderComponent implements OnInit {
   menuHidden = true;
   
   logginUser: string
-  constructor() {}
+  constructor(
+    public router: Router,
+  ) {}
 
   ngOnInit() {}
 
@@ -26,5 +29,6 @@ export class HeaderComponent implements OnInit {
   onLogout() {
     localStorage.removeItem('token');
     alertyfy.success('Anda Telah Logout');
+    this.router.navigate(['home'])
   }
 }

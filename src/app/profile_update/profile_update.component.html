@@ -1,7 +1,7 @@
 <section id="editprofile">
-    <div class="container" style="margin-top: 100px;">
+    <div class="container" style="margin-top: 50px;">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-6 mx-auto">
           <div class="card">
             <div class="card-header">
               <h4>Edit Profile</h4>
@@ -12,7 +12,7 @@
                   <label for="name">Name</label>
                   <input type="text" name="username" [(ngModel)]="editProfile.username" class="form-control"   />
                 </div>
-                <div class="form-group">
+                <div class="form-group col-5">
                   <label for="birthdate">Tanggal Lahir</label>
                   <input name="birthdate" [(ngModel)]="editProfile.birthdate" placeholder="Selected date" type="date" id="date-picker" class="form-control datepicker">
                 </div>
@@ -24,19 +24,11 @@
                     <label for="phoneNumber">No. Handphone</label>
                     <input type="text" name="phoneNumber" [(ngModel)]="editProfile.phoneNumber" class="form-control"  />
                   </div>
+                    <input class="btn-primary" type="Submit" value="Simpan" routerLink="/profile_update" (click)="updateProfile()">
+                    <input class="btn-primary" type="Submit" value="Batalkan" routerLink="/profile">
               </form>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <section id="actions" class="py-4 mb-4 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <a routerLink="/profile_update" (click)="updateProfile()" class="btn btn-dark btn-block">Update Profile</a>
         </div>
       </div>
     </div>

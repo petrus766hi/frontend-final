@@ -16,7 +16,8 @@
                 <label for="confirmpassword">Konfirmasi Password</label>
                 <input name="password" type="password" [(ngModel)]="inputPassword.confirmpassword" class="form-control">
               </div>
-              <input class="btn-dark" type="Submit" value="Simpan" (click)="changePassword()">
+              <input class="btn-primary" type="Submit" value="Simpan" (click)="changePassword()">
+              <input class="btn-primary" type="Submit" value="Batalkan" routerLink="/profile">
             </form>
           </div>
         </div>

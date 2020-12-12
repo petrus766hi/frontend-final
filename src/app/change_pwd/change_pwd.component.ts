@@ -55,7 +55,9 @@ export class Change_PwdComponent implements OnInit {
           alertyfy.error('Password tidak sama')
     } else {
       this.changepwdservice.pwdInput(this.inputPassword).subscribe((response: any) => {
+        (this.inputPassword.password == "" || this.inputPassword.confirmpassword == "")
         if(response.status){
+          alertyfy.success('Berhasil Mengganti Password');
           this.route.navigate(['profile']);
         }
       })

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ResetPasswordService } from '../services/reset-password.service';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
+import * as alertyfy from 'alertifyjs';
 
 @Component({
   selector: 'app-reset_password',
@@ -24,17 +25,16 @@ export class Reset_PasswordComponent implements OnInit {
   ngOnInit() {}
 
   resetPassword() {
-    this.resetpasswordservice.passwordInput(this.inputPwd).subscribe((response: any) => {
-      if(response.status) {
-        this.route.navigate(['login']);
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Password Tidak Boleh Kosong',
-          footer: '<a href>Why do I have this issue?</a>',
-        });
-      }
-    })
+    if ( this.inputPwd.password == ""){
+      alertyfy.error('Password tidak boleh kosong')
+    } else {
+      this.resetpasswordservice.passwordInput(this.inputPwd).subscribe((response: any) => {
+        if(response.status) {
+          alertyfy.success('Berhasil Mengganti Password')
+          this.route.navigate(['login']);
+        }
+      })
+    }
+   
   }
 }

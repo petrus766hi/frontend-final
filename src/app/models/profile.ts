@@ -1,6 +1,6 @@
 export class Profile {
-    username: string;
-    birthdate: string;
-    email: string;
-    phoneNumber: string;
+    username?: String;
+    birthdate?: Date;
+    email?: String;
+    phoneNumber?: String;
 }

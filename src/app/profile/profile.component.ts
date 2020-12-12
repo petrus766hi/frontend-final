@@ -11,8 +11,8 @@ import { Profile } from '../models/profile';
 })
 export class ProfileComponent implements OnInit {
   version: string | null = environment.version;
-  
-  public inputProfile: any = {}
+  profiles : any = Profile
+  // public inputProfile: any = {}
   id: any =''
   constructor(
     public profileservice: ProfileService,
@@ -22,12 +22,13 @@ export class ProfileComponent implements OnInit {
     this.id =  localStorage.getItem('id')
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userProfile()
+  }
 
   userProfile(){
-    this.profileservice.getProfile(this.inputProfile, this.id).subscribe((response: any) => {
-      console.log('mmmmmmmm', response);
-      
+    this.profileservice.getProfile(this.id).subscribe((response: any) => {
+      this.profiles = response.data
     })
   }
 }
