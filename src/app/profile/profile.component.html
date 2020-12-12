@@ -10,13 +10,14 @@
             <form>
               <div class="form-group">
                 <label for="name">Nama</label>
-                <input disabled type="text" name="username" class="form-control" />
+                <input disabled type="text" name="username" [(ngModel)]="profiles.username" class="form-control" />
               </div>
               <div class="form-group">
                 <label for="birthdate">Tanggal Lahir</label>
                 <input
                   disabled
                   name="birthdate"
+                  [(ngModel)]="profiles.birthdate"
                   placeholder="Selected date"
                   type="date"
                   id="date-picker"
@@ -25,11 +26,17 @@
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input disabled type="email" name="email" [(ngModel)]="inputProfile.email" class="form-control" />
+                <input disabled type="email" name="email" [(ngModel)]="profiles.email" class="form-control" />
               </div>
               <div class="form-group">
                 <label for="phoneNumber">No. Handphone</label>
-                <input disabled type="email" name="phoneNumber" class="form-control" />
+                <input
+                  disabled
+                  type="email"
+                  name="phoneNumber"
+                  [(ngModel)]="profiles.phoneNumber"
+                  class="form-control"
+                />
               </div>
             </form>
           </div>
@@ -43,10 +50,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <a routerLink="/change_pwd" class="btn btn-info btn-block">Change Password</a>
-      </div>
-      <div class="col-md-3">
-        <a routerLink="/profile_update" class="btn btn-dark btn-block">Update Profile</a>
+        <a routerLink="/profile_update" class="btn btn-primary btn-block">Update Profile</a>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none">
       <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">
           <i class="fas fa-home"></i>
@@ -27,32 +27,28 @@
         </a>
       </div>
       <div class="navbar-nav ml-auto">
-        <li class="nav-item active" *ngIf="isShow">
-          <a class="nav-link" routerLink="profile">
-            <img src="https://www.flaticon.com/premium-icon/icons/svg/668/668709.svg" width="30" height="30" />
-          </a>
-        </li>
         <li *ngIf="!loggin()" class="nav-item nav-link">
-          <button type="button" routerLink="/login" class="btn btn-outline-dark">Login</button>
+          <button type="button" routerLink="/login" class="btn btn-outline-warning">Login</button>
         </li>
 
-        <li *ngIf="loggin()" class="nav-item nav-link">
-          <button type="button" (click)="onLogout()" class="btn btn-outline-dark">Logout</button>
-        </li>
-
-        <!-- <div *ngIf="loggin()" class="dropdown mr-5" dropdown>
-         <a href="#" class="dropdown-toggle text-light" dropdownToggle (click)="false">
-           Welcome
-         </a>
-         <div class="dropdown-menu" *dropdownMenu>
-           <a href="#" class="dropdown-item">
-             <i class="fas fa-tachometer-alt"></i>My Profile</a>
-           <a href="#" class="dropdown-item">
-              <i class="fas fa-user-circle"></i>Change Password</a>
-           <a (click)="onLogout()" class="dropdown-item">
-              <i *ngIf="loggin()" class="fas fa-sign-out"></i>Logout</a>
-         </div>
-       </div> -->
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <li *ngIf="loggin()" class="nav-item nav-link">
+              <button class="btn btn-outline-warning" id="dropdownBasic1" ngbDropdownToggle>Welcome</button>
+            </li>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <li *ngIf="loggin()" class="nav-item nav-link">
+                <button ngbDropdownItem routerLink="/profile">Profile</button>
+              </li>
+              <li *ngIf="loggin()" class="nav-item nav-link">
+                <button ngbDropdownItem routerLink="/change_pwd">Ubah Password</button>
+              </li>
+              <li *ngIf="loggin()" class="nav-item nav-link">
+                <button ngbDropdownItem (click)="onLogout()" routerLink="/login">Logout</button>
+              </li>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>

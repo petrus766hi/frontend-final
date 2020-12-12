@@ -22,9 +22,4 @@ export class LoginService {
       catchError((err) => of(err))
     );
   }
-
-  logout() {
-    localStorage.removeItem('role');
-    this.router.navigate(['login']);
-  }
 }
