@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
 const httpConnect = {
-  headers: new HttpHeaders({'Content Type': 'application/json'}),
-}
+  headers: new HttpHeaders({ 'Content Type': 'application/json' }),
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
-  endpoint: any = "http:localhost:300"
+  endpoint: any = 'http:localhost:300';
 
-  constructor(
-    private http:HttpClient,
-    private router: Router,  
-  ) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.endpoint}/`, data).pipe(
-        map((body: any) => body),
-        catchError((err) => of(err))
-    )
+      map((body: any) => body),
+      catchError((err) => of(err))
+    );
   }
 }

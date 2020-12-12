@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '@shared';
 import { LombaRoutingModule } from './lomba-routing.module';
 import { LombaComponent } from './lomba.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, LombaRoutingModule, NgbModule, SharedModule],
