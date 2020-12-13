@@ -58,10 +58,16 @@ export class BracketComponent implements OnInit {
     });
     return arr;
   }
+
   ngOnInit() {
-    $('#minimal').bracket({
-      init: this.minimalData /* data to initialize the bracket with */,
-    });
+    let resizeParameters = {
+      teamWidth: 100,
+      scoreWidth: 100,
+      matchMargin: 100,
+      roundMargin: 100,
+      init: this.minimalData,
+    };
+    $('#minimal').bracket(resizeParameters);
     // this.cucok();
   }
 }

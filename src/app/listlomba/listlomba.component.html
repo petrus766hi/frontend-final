@@ -41,7 +41,7 @@
                   <p class="card-text">Area : {{ turnament.SubDistrict }}</p>
                   <p class="card-text" [innerHTML]="status(turnament.Is_active)"></p>
                   <p class="card-text">Jumlah Peserta : {{ turnament.JumlahPeserta }}</p>
-                  <a routerLink="/lomba" class="btn btn-primary">Detail Lomba </a>
+                  <a class="btn btn-primary" [routerLink]="['/lomba', turnament.NamaTournament]">Detail Lomba </a>
                 </div>
               </div>
             </div>
