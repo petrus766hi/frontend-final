@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PasswordService } from '../services/password.service';
 import { environment } from '@env/environment';
-import { not } from '@angular/compiler/src/output/output_ast';
+import * as alertyfy from 'alertifyjs';
 
 @Component({
   selector: 'app-password',
@@ -18,6 +18,11 @@ export class PasswordComponent implements OnInit {
   ngOnInit() {}
 
   forgotPassword() {
-    this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {});
+    this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {
+      console.log('zzzzz', response);
+      if (response.success) {
+        alertyfy.success('Silahkan cek email anda');
+      }
+    });
   }
 }

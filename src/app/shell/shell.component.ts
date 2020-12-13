@@ -17,7 +17,8 @@ export class ShellComponent implements OnInit {
           event['url'] == '/password' ||
           event['url'] == '/change_password' ||
           event['url'] == '/change_pwd' ||
-          event['url'] == '/profile_update'
+          event['url'] == '/profile_update' ||
+          event['url'] == '/reset_password'
         ) {
           this.showHead = false;
         } else {
