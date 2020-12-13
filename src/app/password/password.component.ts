@@ -19,7 +19,7 @@ export class PasswordComponent implements OnInit {
 
   forgotPassword() {
     this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {
-      console.log('zzzzz', response);
+      console.log('Cekkkk emailllllll', response);
       if (response.success) {
         alertyfy.success('Silahkan cek email anda');
       }

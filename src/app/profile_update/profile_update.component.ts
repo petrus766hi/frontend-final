@@ -22,7 +22,7 @@ export class Profile_UpdateComponent implements OnInit {
 
   updateProfile() {
     this.profileupdateservice.inputProfile(this.editProfile, this.id).subscribe((response: any) => {
-      console.log('zzzzzzz', response);
+      console.log('profileUpdateeeeeee', response);
       alertyfy.success('Berhasil Update Profile');
       this.route.navigate(['profile']);
     });
