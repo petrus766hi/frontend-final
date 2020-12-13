@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   active = 1;
   public loginConnect: any = {};
 
-  constructor(public loginservice: LoginService, public router: Router) {}
+  constructor(public authservice: AuthService, public router: Router) {}
 
   ngOnInit() {}
 
   loginUser() {
-    this.loginservice.login(this.loginConnect).subscribe((response: any) => {
+    this.authservice.login(this.loginConnect).subscribe((response: any) => {
       if (response.success) {
         localStorage.setItem('token', response.tokens);
         localStorage.setItem('role', response.data.role);
