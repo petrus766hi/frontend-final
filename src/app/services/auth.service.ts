@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, of, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Peserta } from '../models/peserta';
 
 const httpConnect = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -12,7 +11,7 @@ const httpConnect = {
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class AuthService {
   endpoint: any = 'https://backendsfinal.herokuapp.com';
   constructor(private http: HttpClient, private router: Router) {}
 

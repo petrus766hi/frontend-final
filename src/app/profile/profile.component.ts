@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   userProfile() {
     this.profileservice.getProfile(this.id).subscribe((response: any) => {
       this.profiles = response.data;
-      console.log('>>>>>>>>>>>', response);
     });
   }
 }
