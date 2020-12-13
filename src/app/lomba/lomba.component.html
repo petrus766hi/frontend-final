@@ -19,34 +19,13 @@
       <li [ngbNavItem]="1">
         <a ngbNavLink>Informasi</a>
         <ng-template ngbNavContent>
-          <p>
-            Lomba kelereng adalah salah satu perlombaan yang paling poluper dilaksanakan pada perayaan Proklamasi
-            Kemerdekaan Indonesia 17 Agustus, biasanya diikuti oleh anak usia tujuh hingga dua belas tahun.
-          </p>
-          <hr />
-          <p>
-            Peralatan :<br />
-            1. Kelereng.<br />
-            2. Sendok.<br />
-          </p>
-          <hr />
-          <p>
-            Cara bermain :<br />
-            1. Berjalan cepat setengah lari menjaga kelereng agar tidak jatuh.<br />
-            2. Apabila kelereng jatuh dari sendok maka dinyatakan kalah.<br />
-            3. Untuk menentukan pemenang dilihat dari peserta yang sampai terlebih dahulu dengan kelereng yang tidak
-            jatuh.
-          </p>
+          <p [innerHTML]="detail.Informasi"></p>
         </ng-template>
       </li>
       <li [ngbNavItem]="2">
         <a ngbNavLink>Pendaftaran</a>
         <ng-template ngbNavContent>
-          <p>
-            Syarat peserta :<br />
-            1. Laki-laki dan perempuan.<br />
-            2. Usia 7-12 tahun.
-          </p>
+          <p [innerHTML]="detail.Informasi"></p>
           <button type="button" class="btn btn-dark">Daftar</button><br />
         </ng-template>
       </li>

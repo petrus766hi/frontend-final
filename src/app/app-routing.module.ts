@@ -13,7 +13,9 @@ const routes: Routes = [
       loadChildren: () => import('./profile_update/profile_update.module').then((m) => m.Profile_UpdateModule),
     },
   ]),
-  Shell.childRoutes([{ path: 'lomba', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) }]),
+  Shell.childRoutes([
+    { path: 'lomba/:names', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) },
+  ]),
   Shell.childRoutes([
     { path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) },
   ]),

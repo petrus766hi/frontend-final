@@ -12,8 +12,9 @@ import { Tournament } from '../models/tournament';
 export class ListLombaComponent implements OnInit {
   version: string | null = environment.version;
   page = 1;
-  pageSize = 5;
+  pageSize = 6;
   tournaments: Tournament[];
+  data = '';
   constructor(private listlomba: ListLombaService) {}
 
   ngOnInit() {
@@ -22,10 +23,20 @@ export class ListLombaComponent implements OnInit {
 
   getDataTournament() {
     this.listlomba.getAllTournament().subscribe((res) => {
-      this.tournaments = res.tournaments;
+      const active = res.tournaments.filter((e: any) => {
+        return e.Is_active === true;
+      });
+      this.tournaments = active;
     });
   }
   pageChanged(event: any) {
     this.page = event;
+  }
+  status(value: boolean) {
+    if (value) {
+      return (this.data = `<span class="badge bg-success">Aktif</span>`);
+    } else {
+      return (this.data = `<span class="badge bg-danger">Tidak Aktif</span>`);
+    }
   }
 }
