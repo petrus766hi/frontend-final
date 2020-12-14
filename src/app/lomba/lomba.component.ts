@@ -18,6 +18,7 @@ export class LombaComponent {
   public datas: any = [];
   public loading: boolean = false;
   public peserta: boolean;
+  jumlahPeserta: number;
   dataPeserta: Array<any>;
   response: Boolean = false;
   constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService, private router: Router) {
@@ -36,6 +37,7 @@ export class LombaComponent {
         })
       )
       .subscribe((res) => {
+        this.jumlahPeserta = res.tournaments.JumlahPeserta;
         this.detail = res.tournaments;
         this.dataPeserta = res.tournaments.Id_Peserta;
       });
