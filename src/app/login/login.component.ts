@@ -3,8 +3,6 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
-import * as alertyfy from 'alertifyjs';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -51,9 +49,5 @@ export class LoginComponent implements OnInit {
         });
       }
     });
-  }
-
-  onLogin(loginForm: NgForm) {
-    console.log(loginForm.value);
   }
 }

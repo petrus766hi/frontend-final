@@ -25,6 +25,8 @@ export class Change_PwdComponent implements OnInit {
       alertyfy.error('Password tidak boleh kosong');
     } else {
       this.changepwdservice.pwdInput(this.inputPassword).subscribe((response: any) => {
+        console.log('ubahhh passwordd', response);
+        console.log('ganti password', this.inputPassword);
         if (response.status) {
           alertyfy.success('Password berhasil diganti');
           this.route.navigate(['profile']);
