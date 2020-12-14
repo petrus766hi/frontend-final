@@ -1,4 +1,4 @@
-<section id="editprofile">
+<section id="editprofile" #customLoadingTemplate>
   <div class="container" style="margin-top: 50px">
     <div class="row">
       <div class="col-6 mx-auto">
@@ -52,3 +52,8 @@
     </div>
   </div>
 </section>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>

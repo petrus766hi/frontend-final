@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import 'jquery';
+import * as _ from 'lodash';
 declare var $: any;
 declare global {
   interface JQuery {
@@ -13,28 +14,19 @@ declare global {
   styleUrls: ['./bracket.component.scss'],
 })
 export class BracketComponent implements OnInit {
-  minimalData = {
-    teams: this.cucok(),
-    results: [
-      [
-        [
-          [null, null],
-          [null, null],
-          [null, null],
-          [null, null],
-        ],
-        [
-          [null, null],
-          [null, 4],
-        ],
-        [
-          [null, null],
-          [null, null],
-        ],
-      ],
-    ],
-  };
+  data: any = ['Team 1', 'Team 2', 'Team 3', 'Team 4', 'Team 5', 'Team 6', 'Team 7', 'Team 8'];
+  teams: any = [];
+
+  @Input() dataPeserta: [];
+
   constructor() {}
+  grupsName() {
+    let data: any = _.get(this, 'dataPeserta', []);
+    const aa = data.map((e: any) => {
+      return e.name;
+    });
+    return aa;
+  }
 
   cucok() {
     let data: any = ['Team 1', 'Team 2', 'Team 3', 'Team 4', 'Team 5', 'Team 6', 'Team 7', 'Team 8'];
@@ -65,9 +57,28 @@ export class BracketComponent implements OnInit {
       scoreWidth: 100,
       matchMargin: 100,
       roundMargin: 100,
-      init: this.minimalData,
+      init: {
+        teams: _.chunk(this.grupsName(), 2),
+        results: [
+          [
+            [
+              [null, null],
+              [null, null],
+              [null, null],
+              [null, null],
+            ],
+            [
+              [null, null],
+              [null, 4],
+            ],
+            [
+              [null, null],
+              [null, null],
+            ],
+          ],
+        ],
+      },
     };
     $('#minimal').bracket(resizeParameters);
-    // this.cucok();
   }
 }

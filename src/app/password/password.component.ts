@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PasswordService } from '../services/password.service';
 import { environment } from '@env/environment';
-import * as alertyfy from 'alertifyjs';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
@@ -12,17 +11,30 @@ import * as alertyfy from 'alertifyjs';
 export class PasswordComponent implements OnInit {
   version: string | null = environment.version;
   public inputEmail: any = {};
+  public loading: boolean = false;
 
   constructor(public router: Router, public passwordservice: PasswordService) {}
 
   ngOnInit() {}
 
   forgotPassword() {
-    this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {
-      console.log('Cekkkk emailllllll', response);
-      if (response.success) {
-        alertyfy.success('Silahkan cek email anda');
-      }
-    });
+    this.loading = true;
+    if (this.inputEmail.email === '') {
+      this.loading = false;
+      Swal.fire({
+        icon: 'error',
+        title: 'Silahkan Isi Terlebih Dahulu',
+      });
+    } else {
+      this.passwordservice.passwordForget(this.inputEmail).subscribe((response: any) => {
+        if (response.success) {
+          this.loading = false;
+          Swal.fire({
+            icon: 'success',
+            title: response.msg,
+          });
+        }
+      });
+    }
   }
 }

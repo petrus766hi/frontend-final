@@ -7,7 +7,7 @@
             <h4>Login</h4>
           </div>
           <div class="card-body">
-            <form action="index.html">
+            <form action="index.html" #customLoadingTemplate>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input name="email" type="text" [(ngModel)]="loginConnect.email" class="form-control" required />
@@ -39,3 +39,8 @@
     </div>
   </div>
 </section>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>

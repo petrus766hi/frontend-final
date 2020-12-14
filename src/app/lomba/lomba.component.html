@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" #customLoadingTemplate>
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -9,7 +9,7 @@
           style="height: 200px"
         />
         <div class="carousel-caption d-none d-md-block">
-          <h2>Lomba Kelereng</h2>
+          <h2>{{ detail.NamaTournament }}</h2>
           <p>Daftar sekarang dan menangkan hadiahnya</p>
         </div>
       </div>
@@ -26,16 +26,22 @@
         <a ngbNavLink>Pendaftaran</a>
         <ng-template ngbNavContent>
           <p [innerHTML]="detail.Informasi"></p>
-          <button type="button" class="btn btn-dark">Daftar</button><br />
+
+          <button type="button" class="btn btn-dark" (click)="registerLomba(detail)">Daftar</button>
         </ng-template>
       </li>
       <li [ngbNavItem]="3">
         <a ngbNavLink>Pertandingan</a>
         <ng-template ngbNavContent>
-          <app-bracket></app-bracket>
+          <app-bracket [dataPeserta]="dataPeserta"></app-bracket>
         </ng-template>
       </li>
     </ul>
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </div>
 </div>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>
