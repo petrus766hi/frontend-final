@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LombaService } from '../lomba/lomba.service';
 import { finalize } from 'rxjs/operators';
 import { DetailTournament } from '../models/lomba';
@@ -20,7 +20,7 @@ export class LombaComponent {
   public peserta: boolean;
   dataPeserta: Array<any>;
   response: Boolean = false;
-  constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService) {
+  constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService, private router: Router) {
     this.query = this.ActivatedRoutes.snapshot.paramMap.get('names');
   }
 
@@ -58,49 +58,62 @@ export class LombaComponent {
 
   registerLomba(value: any) {
     this.loading = true;
-    if (value.Id_Peserta.length === value.JumlahPeserta) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.loading = false;
       Swal.fire({
         icon: 'error',
-        title: 'Slot sudah Penuh',
+        title: 'Anda Belum Register!',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['login']);
+        }
       });
     } else {
-      if (!this.peserta) {
-        let data = {
-          name: '',
-          fase1: '',
-          fase2: '',
-          fase3: '',
-        };
-        this.LombaService.RegisterPeserta(value._id, data)
-          .pipe(
-            finalize(() => {
-              console.log('done');
-            })
-          )
-          .subscribe((res) => {
-            console.log('xx', res);
-            if (res.success) {
-              this.loading = false;
-              this.UpdatePesertaRegister();
-              Swal.fire({
-                icon: 'success',
-                title: 'Berhasil Mendaftar Lomba',
-                text: 'Selamat Anda Berhasil Mendaftar Lomba ',
-              });
-            } else {
-              this.loading = false;
-              Swal.fire({
-                icon: 'error',
-                title: res.msg,
-              });
-            }
-          });
-      } else {
-        this.loading = false;
+      if (value.Id_Peserta.length === value.JumlahPeserta) {
         Swal.fire({
           icon: 'error',
-          title: 'Anda Sudah Tidak Bisa Daftar Ke 2x',
+          title: 'Slot sudah Penuh',
         });
+      } else {
+        if (!this.peserta) {
+          let data = {
+            name: '',
+            fase1: '',
+            fase2: '',
+            fase3: '',
+          };
+          this.LombaService.RegisterPeserta(value._id, data)
+            .pipe(
+              finalize(() => {
+                console.log('done');
+              })
+            )
+            .subscribe((res) => {
+              console.log('xx', res);
+              if (res.success) {
+                this.loading = false;
+                this.UpdatePesertaRegister();
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Berhasil Mendaftar Lomba',
+                  text: 'Selamat Anda Berhasil Mendaftar Lomba ',
+                });
+              } else {
+                this.loading = false;
+                Swal.fire({
+                  icon: 'error',
+                  title: res.msg,
+                });
+              }
+            });
+        } else {
+          this.loading = false;
+          Swal.fire({
+            icon: 'error',
+            title: 'Anda Sudah Tidak Bisa Daftar Ke 2x',
+          });
+        }
       }
     }
   }
