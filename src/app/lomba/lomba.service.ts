@@ -4,17 +4,17 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 const routes = {
-  getAll: () => `https://backendsfinal.herokuapp.com/api/tournament/tournament/`,
+  getOne: (id: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/` + id,
 };
 
 @Injectable({
   providedIn: 'root',
 })
-export class ListLombaService {
+export class LombaService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllTournament(): Observable<any> {
-    return this.httpClient.get(routes.getAll()).pipe(
+  getDetailTournament(id: any): Observable<any> {
+    return this.httpClient.get(routes.getOne(id)).pipe(
       map((body: any) => body.data),
       catchError(() => of('err'))
     );

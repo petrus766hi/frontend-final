@@ -18,7 +18,9 @@ export class ProfileComponent implements OnInit {
     this.id = localStorage.getItem('id');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userProfile();
+  }
 
   userProfile() {
     this.profileservice.getProfile(this.id).subscribe((response: any) => {
