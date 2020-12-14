@@ -40,6 +40,7 @@
                   <h5 class="card-title">{{ turnament.NamaTournament }}</h5>
                   <p class="card-text">Area : {{ turnament.SubDistrict }}</p>
                   <p class="card-text" [innerHTML]="status(turnament.Is_active)"></p>
+                  <p class="card-text" [innerHTML]="avail(turnament.JumlahPeserta, turnament.Id_Peserta)"></p>
                   <p class="card-text">Jumlah Peserta : {{ turnament.JumlahPeserta }}</p>
                   <a class="btn btn-primary" [routerLink]="['/lomba', turnament.NamaTournament]">Detail Lomba </a>
                 </div>
