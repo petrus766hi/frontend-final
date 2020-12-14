@@ -8,16 +8,19 @@ import * as alertyfy from 'alertifyjs';
 })
 export class HeaderComponent implements OnInit {
   menuHidden = true;
-  isShow: boolean;
+  isWelcome: boolean;
+  isLogin: boolean;
   logginUser: string;
   constructor() {}
 
   ngOnInit() {
     const role: any = localStorage.getItem('role');
     if (role === 'peserta') {
-      this.isShow = true;
+      this.isWelcome = true;
+      this.isLogin = false;
     } else {
-      this.isShow = false;
+      this.isWelcome = false;
+      this.isLogin = true;
     }
   }
 
@@ -31,7 +34,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    localStorage.removeItem('token');
+    let keysToRemove = ['token', 'role', 'email', 'id'];
+    keysToRemove.forEach((k) => localStorage.removeItem(k));
     alertyfy.success('Anda Telah Logout');
   }
 }

@@ -27,23 +27,23 @@
         </a>
       </div>
       <div class="navbar-nav ml-auto">
-        <li *ngIf="!loggin()" class="nav-item nav-link">
+        <li class="nav-item nav-link" *ngIf="isLogin">
           <button type="button" routerLink="/login" class="btn btn-outline-warning">Login</button>
         </li>
 
-        <div class="col">
+        <div class="col" *ngIf="isWelcome">
           <div ngbDropdown class="d-inline-block">
-            <li *ngIf="loggin()" class="nav-item nav-link">
+            <li class="nav-item nav-link">
               <button class="btn btn-outline-warning" id="dropdownBasic1" ngbDropdownToggle>Welcome</button>
             </li>
             <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <li *ngIf="loggin()" class="nav-item nav-link">
+              <li class="nav-item nav-link">
                 <button ngbDropdownItem routerLink="/profile">Profile</button>
               </li>
-              <li *ngIf="loggin()" class="nav-item nav-link">
+              <li class="nav-item nav-link">
                 <button ngbDropdownItem routerLink="/change_pwd">Ubah Password</button>
               </li>
-              <li *ngIf="loggin()" class="nav-item nav-link">
+              <li class="nav-item nav-link">
                 <button ngbDropdownItem (click)="onLogout()" routerLink="/login">Logout</button>
               </li>
             </div>
