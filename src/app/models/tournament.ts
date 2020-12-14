@@ -4,4 +4,5 @@ export class Tournament {
   JumlahPeserta?: Number;
   SubDistrict?: String;
   Is_active?: Boolean;
+  Id_Peserta?: [];
 }

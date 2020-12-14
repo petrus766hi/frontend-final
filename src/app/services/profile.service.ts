@@ -12,7 +12,7 @@ export class ProfileService {
   constructor(private router: Router, private http: HttpClient) {}
 
   getProfile(id: any): Observable<any> {
-    return this.http.get(`${this.endpoint}api/peserta/getId/${id}`).pipe(
+    return this.http.get(`${this.endpoint}/api/peserta/getId/${id}`).pipe(
       map((body: any) => body),
       catchError((err) => of(err))
     );

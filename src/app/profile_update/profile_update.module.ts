@@ -7,9 +7,18 @@ import { Profile_UpdateRoutingModule } from './profile_update-routing.module';
 import { Profile_UpdateComponent } from './profile_update.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
-  imports: [CommonModule, TranslateModule, Profile_UpdateRoutingModule, SharedModule, NgbModule, FormsModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    Profile_UpdateRoutingModule,
+    SharedModule,
+    NgbModule,
+    FormsModule,
+    NgxLoadingModule,
+  ],
   declarations: [Profile_UpdateComponent],
 })
 export class Profile_UpdateModule {}
