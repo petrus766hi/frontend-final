@@ -19,7 +19,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userProfile();
-    console.log('xxx', this.id);
   }
 
   userProfile() {
