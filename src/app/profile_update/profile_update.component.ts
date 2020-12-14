@@ -37,7 +37,6 @@ export class Profile_UpdateComponent implements OnInit {
           title: 'Anda Gagal Update Profile',
         });
       }
-
     });
   }
 }
