@@ -73,6 +73,7 @@ export class LombaComponent {
       });
     } else {
       if (value.Id_Peserta.length === value.JumlahPeserta) {
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Slot sudah Penuh',
@@ -106,6 +107,7 @@ export class LombaComponent {
                 Swal.fire({
                   icon: 'error',
                   title: res.msg,
+                  text: 'Silahkan Tunggu Email Aktivasi Anda & Login Ulang',
                 });
               }
             });

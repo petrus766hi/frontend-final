@@ -40,10 +40,10 @@ export class ListLombaComponent implements OnInit {
     }
   }
   avail(value: any, values: any) {
-    if (value >= values.length) {
+    if (value > values.length) {
       return (this.data = `<span class="badge bg-success">Slot Masih Cukup</span>`);
     } else {
-      return (this.data = `<span class="badge bg-danger">Slot Sudah Tidak Cukup</span>`);
+      return (this.data = `<span class="badge bg-danger">Slot Sudah Penuh</span>`);
     }
   }
 }
