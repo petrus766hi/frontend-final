@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import 'jquery';
+import * as _ from 'lodash';
 declare var $: any;
 declare global {
   interface JQuery {
@@ -13,61 +14,73 @@ declare global {
   styleUrls: ['./bracket.component.scss'],
 })
 export class BracketComponent implements OnInit {
-  minimalData = {
-    teams: this.cucok(),
-    results: [
-      [
-        [
-          [null, null],
-          [null, null],
-          [null, null],
-          [null, null],
-        ],
-        [
-          [null, null],
-          [null, 4],
-        ],
-        [
-          [null, null],
-          [null, null],
-        ],
-      ],
-    ],
-  };
+  data: any = ['Team 1', 'Team 2', 'Team 3', 'Team 4', 'Team 5', 'Team 6', 'Team 7', 'Team 8'];
+  teams: any = [];
+
+  @Input() dataPeserta: [];
+  @Input() jumlahPeserta: number;
+
   constructor() {}
+  grupsName() {
+    let data: any = _.get(this, 'dataPeserta', []);
+    const aa = data.map((e: any) => {
+      return e.name;
+    });
+    return aa;
+  }
+  fase1() {
+    let data: any = _.get(this, 'dataPeserta', []);
+    const aa = data.map((e: any) => {
+      return e.fase1;
+    });
 
-  cucok() {
-    let data: any = ['Team 1', 'Team 2', 'Team 3', 'Team 4', 'Team 5', 'Team 6', 'Team 7', 'Team 8'];
-    let arr: any = [];
+    return aa;
+  }
+  fase2() {
     let tmp: any = [];
-    let max: number = 2;
-    data.map((x: any, i: any) => {
-      if (tmp.length < max) {
-        tmp.push(x);
-      } else {
-        tmp = [];
-        tmp.push(x);
-      }
-
-      if (tmp.length == max) {
-        // console.log(tmp)
-        arr.push(tmp);
-      } else if (i == data.length - 1) {
-        arr.push(tmp);
+    let data: any = _.get(this, 'dataPeserta', []);
+    data.map((e: any) => {
+      if (e.fase2 > 1) {
+        tmp.push(e.fase2);
       }
     });
-    return arr;
+    return tmp;
   }
-
+  fase3() {
+    let tmp: any = [];
+    let data: any = _.get(this, 'dataPeserta', []);
+    data.map((e: any) => {
+      if (e.fase3 > 1) {
+        tmp.push(e.fase3);
+      }
+    });
+    return tmp;
+  }
   ngOnInit() {
-    let resizeParameters = {
-      teamWidth: 100,
-      scoreWidth: 100,
-      matchMargin: 100,
-      roundMargin: 100,
-      init: this.minimalData,
-    };
-    $('#minimal').bracket(resizeParameters);
-    // this.cucok();
+    if (this.jumlahPeserta == 4) {
+      let resizeParameters = {
+        teamWidth: 80,
+        scoreWidth: 80,
+        matchMargin: 80,
+        roundMargin: 80,
+        init: {
+          teams: _.chunk(this.grupsName(), 2),
+          results: [[_.chunk(this.fase1(), 2), _.chunk(this.fase2(), 2)]],
+        },
+      };
+      $('#minimal').bracket(resizeParameters);
+    } else if (this.jumlahPeserta == 8) {
+      let resizeParameters = {
+        teamWidth: 80,
+        scoreWidth: 80,
+        matchMargin: 80,
+        roundMargin: 80,
+        init: {
+          teams: _.chunk(this.grupsName(), 2),
+          results: [[_.chunk(this.fase1(), 2), _.chunk(this.fase2(), 2), _.chunk(this.fase3(), 2)]],
+        },
+      };
+      $('#minimal').bracket(resizeParameters);
+    }
   }
 }

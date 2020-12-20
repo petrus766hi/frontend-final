@@ -3,6 +3,7 @@ import { ProfileService } from '../services/profile.service';
 import { environment } from '@env/environment';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Profile } from '../models/profile';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -10,8 +11,6 @@ import { Profile } from '../models/profile';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  version: string | null = environment.version;
-
   profiles: any = Profile;
   id: any = '';
   constructor(public profileservice: ProfileService, private router: ActivatedRoute, public route: Router) {
@@ -23,8 +22,15 @@ export class ProfileComponent implements OnInit {
   }
 
   userProfile() {
-    this.profileservice.getProfile(this.id).subscribe((response: any) => {
-      this.profiles = response.data;
-    });
+    this.profileservice
+      .getProfile(this.id)
+      .pipe(
+        finalize(() => {
+          console.log('done');
+        })
+      )
+      .subscribe((response: any) => {
+        this.profiles = response.data;
+      });
   }
 }

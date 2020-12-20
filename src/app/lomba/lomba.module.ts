@@ -8,8 +8,11 @@ import { LombaComponent } from './lomba.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BracketComponent } from './bracket/bracket.component';
 
+import { NgxLoadingModule } from 'ngx-loading';
+import { WinnerComponent } from './winner/winner.component';
+
 @NgModule({
-  imports: [CommonModule, TranslateModule, LombaRoutingModule, NgbModule, SharedModule],
-  declarations: [LombaComponent, BracketComponent],
+  imports: [CommonModule, TranslateModule, LombaRoutingModule, NgbModule, SharedModule, NgxLoadingModule],
+  declarations: [LombaComponent, BracketComponent, WinnerComponent],
 })
 export class LombaModule {}

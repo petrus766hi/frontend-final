@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NG_VALIDATORS, Validator, ValidationErrors } from '@angular/forms';
 import { HttpClientModule, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
@@ -15,15 +16,18 @@ import { ProfileModule } from './profile/profile.module';
 import { LombaModule } from './lomba/lomba.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
+
 import { ShellModule } from './shell/shell.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { NgxLoadingModule } from 'ngx-loading';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot(),
     NgbModule,
@@ -34,8 +38,10 @@ import { AppRoutingModule } from './app-routing.module';
     ProfileModule,
     LombaModule,
     LoginModule,
+
     RegisterModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
+    NgxLoadingModule.forRoot({}),
   ],
   declarations: [AppComponent],
   providers: [

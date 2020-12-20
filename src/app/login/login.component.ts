@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +14,22 @@ export class LoginComponent implements OnInit {
   version: string | null = environment.version;
   isLoading = false;
   active = 1;
+  Form = new FormControl('');
   public loginConnect: any = {};
-
+  public loading = false;
   constructor(public authservice: AuthService, public router: Router) {}
 
   ngOnInit() {}
 
   loginUser() {
+    this.loading = true;
     this.authservice.login(this.loginConnect).subscribe((response: any) => {
       if (response.success) {
         localStorage.setItem('token', response.tokens);
         localStorage.setItem('role', response.data.role);
         localStorage.setItem('email', response.data.email);
         localStorage.setItem('id', response.data._id);
+        this.loading = false;
         Swal.fire({
           icon: 'success',
           title: 'Berhasil Login',
@@ -41,6 +45,7 @@ export class LoginComponent implements OnInit {
           });
         }
       } else {
+        this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

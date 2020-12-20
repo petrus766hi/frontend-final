@@ -1,4 +1,4 @@
-<section id="register">
+<section id="register" #customLoadingTemplate>
   <div class="container">
     <div class="row">
       <div class="col-md-6 mx-auto">
@@ -7,16 +7,22 @@
             <h4>Register</h4>
           </div>
           <div class="card-body">
-            <form action="index.html">
+            <form action="index.html" [formGroup]="regform" (ngSumbit)="onSubmit(fs)">
               <div class="form-group">
                 <label for="username">Username</label>
                 <input
                   name="username"
                   type="text"
                   [(ngModel)]="registerConnect.username"
-                  class="form-control"
+                  #username="ngModel"
+                  [ngClass]="{ 'is-invalid': username.errors && username.touched }"
                   required
+                  minlength="2"
                 />
+                <div *ngIf="username.invalid && username.touched" class="text-danger">
+                  <div *ngIf="username.errors.required">Username is required</div>
+                  <div *ngIf="username.errors.minlength">Username must be at least 3 characters long.</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
@@ -24,13 +30,33 @@
                   name="password"
                   type="password"
                   [(ngModel)]="registerConnect.password"
+                  #password="ngModel"
+                  [ngClass]="{ 'is-invalid': fs.submitted && password.invalid }"
                   class="form-control"
                   required
+                  minlength="4"
                 />
+                <div *ngIf="password.invalid && password.touched" class="text-danger">
+                  <div *ngIf="password.errors.required">Password is required</div>
+                  <div *ngIf="password.errors.minlength">Password must be at least 4 characters long</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input name="email" type="text" [(ngModel)]="registerConnect.email" class="form-control" required />
+                <input
+                  name="email"
+                  type="text"
+                  [(ngModel)]="registerConnect.email"
+                  #email="ngModel"
+                  [ngClass]="{ 'is-invalid': fs.submitted && email.invalid }"
+                  class="form-control"
+                  formControlName="email"
+                  required
+                />
+                <div *ngIf="email.invalid && email.touched" class="text-danger">
+                  <div *ngIf="email.errors.required">Email is required</div>
+                  <div *ngIf="email.errors.email">Email not valid</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="birthdate">Tanggal Lahir</label>
@@ -49,9 +75,17 @@
                   name="phoneNumber"
                   type="text"
                   [(ngModel)]="registerConnect.phoneNumber"
+                  #phoneNumber="ngModel"
+                  [ngClass]="{ 'is-invalid': fs.submitted && phoneNumber.invalid }"
                   class="form-control"
+                  formControlName="phoneNumber"
                   required
+                  minlength="11"
                 />
+                <div *ngIf="phoneNumber.invalid && phoneNumber.touched" class="text-danger">
+                  <div *ngIf="phoneNumber.errors.required">phoneNumber is required</div>
+                  <div *ngIf="phoneNumber.errors.minlength">phoneNumber must be at least 10 characters long</div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="inputState">Role</label>
@@ -69,3 +103,8 @@
     </div>
   </div>
 </section>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"
+></ngx-loading>

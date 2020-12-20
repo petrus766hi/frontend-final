@@ -38,6 +38,7 @@ const routes: Routes = [
       loadChildren: () => import('./reset_password/reset_password.module').then((m) => m.Reset_PasswordModule),
     },
   ]),
+
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
