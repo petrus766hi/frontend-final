@@ -30,13 +30,22 @@
               "src/manifest.webmanifest",
               "src/assets"
             ],
-            "styles": ["src/main.scss", "./node_modules/jquery-bracket/dist/jquery.bracket.min.css"],
+            "styles": [
+              "src/main.scss",
+              "./node_modules/jquery-bracket/dist/jquery.bracket.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/quill/dist/quill.core.css",
+              "node_modules/quill/dist/quill.snow.css"
+            ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/jquery-bracket/dist/jquery.bracket.min.js",
               "./node_modules/jquery/dist/jquery.min.js",
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/jquery-bracket/dist/jquery.bracket.min.js"
+              "node_modules/jquery-bracket/dist/jquery.bracket.min.js",
+              "node_modules/quill/dist/quill.js"
             ]
           },
           "configurations": {

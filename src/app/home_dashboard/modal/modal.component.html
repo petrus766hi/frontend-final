@@ -1,0 +1,87 @@
+<button class="btn btn-warning btn-block" (click)="open(mylomba)"><i class="fas fa-plus"></i> Add Lomba</button>
+<ng-template #mylomba let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Registrasi Lomba</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <form action="index.html">
+              <div class="form-group">
+                <label for="nama">Nama Lomba</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="NamaTournament"
+                  [(ngModel)]="dataTournament.NamaTournament"
+                />
+              </div>
+              <div class="form-group">
+                <label for="type">Type Lomba</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="TypeTournament"
+                  [(ngModel)]="dataTournament.TypeTournament"
+                />
+              </div>
+              <div class="form-group">
+                <label for="jumlah">Jumlah Peserta</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="JumlahPeserta"
+                  [(ngModel)]="dataTournament.JumlahPeserta"
+                />
+              </div>
+              <div class="form-group">
+                <label for="usia">Usia Peserta</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  name="UsiaTournament"
+                  [(ngModel)]="dataTournament.UsiaTournament"
+                />
+              </div>
+              <div class="form-group">
+                <label for="kode">Kode Lomba</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="CodeTournament"
+                  [(ngModel)]="dataTournament.CodeTournament"
+                />
+              </div>
+              <div class="form-group">
+                <label for="kode">Informasi</label>
+                <angular-editor
+                  [(ngModel)]="dataTournament.Informasi"
+                  [ngModelOptions]="{ standalone: true }"
+                  [style]="{ height: '500px' }"
+                ></angular-editor>
+              </div>
+              <div class="form-group">
+                <label for="kode">Pendaftaran</label>
+                <angular-editor
+                  [(ngModel)]="dataTournament.Pendaftaran"
+                  [ngModelOptions]="{ standalone: true }"
+                  [style]="{ height: '320px' }"
+                ></angular-editor>
+              </div>
+              <input type="submit" value="Submit" class="btn btn-dark btn-block" (click)="createTournament()" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
+<ngx-ui-loader></ngx-ui-loader>

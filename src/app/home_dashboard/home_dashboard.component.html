@@ -1,0 +1,140 @@
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <button (click)="open(mymodal)" class="btn btn-primary btn-block">
+          <i class="fas fa-plus"></i> Add Panitia
+        </button>
+      </div>
+      <div class="col-md-3">
+        <!-- <button class="btn btn-warning btn-block" (click)="open(mylomba)" [disabled]="hidden_button_lomba">
+          <i class="fas fa-plus"></i> Add Lomba
+        </button> -->
+        <app-modal></app-modal>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="posts">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h4>List Panitia</h4>
+          </div>
+          <p-table [value]="products1">
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="code">Code ID</th>
+                <th pSortableColumn="username">Name <p-sortIcon field="username"></p-sortIcon></th>
+                <th pSortableColumn="subDistirict">District<p-sortIcon field="subDistirict"></p-sortIcon></th>
+                <th pSortableColumn="email">Email<p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="role">Role</th>
+                <th pSortableColumn="is_active_peserta">Aktif<p-sortIcon field="is_active_peserta"></p-sortIcon></th>
+                <th pSortableColumn="Action">Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+              <tr>
+                <td>{{ product._id }}</td>
+                <td>{{ product.username }}</td>
+                <td>{{ product.subDistirict }}</td>
+                <td>{{ product.email }}</td>
+                <td>{{ product.role }}</td>
+                <td>{{ status(product.is_active_peserta) }}</td>
+                <td>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-check"
+                    class="p-button-rounded"
+                    (click)="goEdit(product._id)"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-times"
+                    class="p-button-rounded p-button-danger"
+                    (click)="DeletePeserta(product._id)"
+                  ></button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card text-center bg-primary text-white mb-3">
+          <div class="card-body">
+            <h3>List Panitia</h3>
+            <h4 class="display-4"><i class="fas fa-pencil-alt"></i> {{ lengthPanitia }}</h4>
+            <a class="btn btn-outline-light btn-sm">View</a>
+          </div>
+        </div>
+
+        <div class="card text-center bg-success text-white mb-3">
+          <div class="card-body">
+            <h3>List Lomba</h3>
+            <h4 class="display-4"><i class="fas fa-folder"></i> 4</h4>
+            <a routerLink="/tournament" class="btn btn-outline-light btn-sm">View</a>
+          </div>
+        </div>
+
+        <div class="card text-center bg-warning text-white mb-3">
+          <div class="card-body">
+            <h3>List Peserta</h3>
+            <h4 class="display-4">
+              <i class="fas fa-users">{{ lengthPeserta }}</i>
+            </h4>
+            <a routerLink="/user" class="btn btn-outline-light btn-sm">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Registrasi Panitia</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-body">
+            <form action="index.html">
+              <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="data.username" />
+              </div>
+              <div class="form-group">
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="data.password" />
+              </div>
+              <div class="form-group">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="data.email" />
+              </div>
+              <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" class="form-control" name="roles" [(ngModel)]="data.roles" />
+              </div>
+              <input type="submit" value="Submit" class="btn btn-dark btn-block" (click)="createPanitias()" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>

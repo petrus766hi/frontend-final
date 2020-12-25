@@ -4,6 +4,7 @@ import { ResetPasswordService } from '../services/reset-password.service';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
 import * as alertyfy from 'alertifyjs';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reset_password',
@@ -12,6 +13,7 @@ import * as alertyfy from 'alertifyjs';
 })
 export class Reset_PasswordComponent implements OnInit {
   version: string | null = environment.version;
+  resform: FormGroup;
   public inputPwd: any = {
     password: '',
     token: this.router.snapshot.params.id,
@@ -22,7 +24,11 @@ export class Reset_PasswordComponent implements OnInit {
     public resetpasswordservice: ResetPasswordService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.resform = new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    });
+  }
 
   resetPassword() {
     if (this.inputPwd.password == '') {
