@@ -7,6 +7,7 @@ import { Product } from '../models/product';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-home_dashboard',
   templateUrl: './home_dashboard.component.html',
@@ -22,7 +23,7 @@ export class Home_DashboardComponent implements OnInit {
   hidden_button_lomba = false;
   lengthPeserta: number;
   lengthPanitia: number;
-
+  regform: FormGroup;
   public datas: any = [];
   constructor(
     private quoteService: QuoteService,
@@ -73,6 +74,12 @@ export class Home_DashboardComponent implements OnInit {
     };
     this.getPesertaLength();
     this.getLombaLength();
+
+    this.regform = new FormGroup({
+      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    });
   }
   goEdit(data: any) {
     this.router.navigate(['home/panitia'], { queryParams: { idPanitia: data } });

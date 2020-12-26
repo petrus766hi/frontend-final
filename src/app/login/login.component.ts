@@ -43,11 +43,7 @@ export class LoginComponent implements OnInit {
         if (response.data.role == 'peserta') {
           this.router.navigate(['home']);
         } else {
-          Swal.fire({
-            icon: 'success',
-            title: 'Berhasil Login Anda Adalah Peserta',
-            text: 'Selamat Datang' + ' ' + response.data.role,
-          });
+          this.router.navigate(['homeadmin']);
         }
       } else {
         this.loading = false;

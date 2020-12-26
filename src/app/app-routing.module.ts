@@ -16,6 +16,7 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: 'lomba/:names', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) },
   ]),
+  Shell.childRoutes([{ path: 'team', loadChildren: () => import('./team/team.module').then((m) => m.TeamModule) }]),
   Shell.childRoutes([
     { path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) },
   ]),
@@ -70,7 +71,12 @@ const routes: Routes = [
     },
   ]),
   Shell.childRoutes([{ path: 'new', loadChildren: () => import('./new/new.module').then((m) => m.NewModule) }]),
-
+  Shell.childRoutes([
+    {
+      path: 'homeadmin',
+      loadChildren: () => import('./home_dashboard/home_dashboard.module').then((m) => m.Home_DashboardModule),
+    },
+  ]),
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

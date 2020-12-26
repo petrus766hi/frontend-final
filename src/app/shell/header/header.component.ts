@@ -10,7 +10,9 @@ export class HeaderComponent implements OnInit {
   menuHidden = true;
   isWelcome: boolean;
   isLogin: boolean;
-  logginUser: string;
+  // logginUser: string;
+  showUser: boolean;
+  showAdmin: boolean;
   constructor() {}
 
   ngOnInit() {
@@ -22,16 +24,28 @@ export class HeaderComponent implements OnInit {
       this.isWelcome = false;
       this.isLogin = true;
     }
+    this.showHeaderAdmin();
+  }
+
+  showHeaderAdmin() {
+    let roleAdmin = localStorage.getItem('role');
+    if (roleAdmin == 'panitia' || roleAdmin == 'master') {
+      this.showUser = false;
+      this.showAdmin = true;
+    } else {
+      this.showUser = true;
+      this.showAdmin = false;
+    }
   }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
   }
 
-  loggin() {
-    this.logginUser = localStorage.getItem('token');
-    return this.logginUser;
-  }
+  // loggin() {
+  //   this.logginUser = localStorage.getItem('token');
+  //   return this.logginUser;
+  // }
 
   onLogout() {
     let keysToRemove = ['token', 'role', 'email', 'id'];

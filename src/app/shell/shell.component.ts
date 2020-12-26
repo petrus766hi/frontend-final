@@ -8,6 +8,8 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 })
 export class ShellComponent implements OnInit {
   showHead: boolean = false;
+  showAdmin: boolean = false;
+  showClose: boolean = true;
   constructor(private router: Router) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
@@ -18,7 +20,8 @@ export class ShellComponent implements OnInit {
           event['url'] == '/change_password' ||
           event['url'] == '/change_pwd' ||
           event['url'] == '/profile_update' ||
-          event['url'] == '/reset_password'
+          event['url'] == '/reset_password' ||
+          event['url'] == '/team'
         ) {
           this.showHead = false;
         } else {
