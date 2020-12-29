@@ -47,9 +47,9 @@
           <!-- <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter> -->
         </div>
       </th>
-      <th>
+      <!-- <th>
         <div class="p-d-flex p-jc-between p-ai-center">Action</div>
-      </th>
+      </th> -->
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-peserta let-i="rowIndex">
@@ -66,18 +66,18 @@
       <td>
         <input [(ngModel)]="peserta.fase3" style="width: 60px" type="number" />
       </td>
-      <td>
-        <button
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-check"
-          class="p-button-rounded"
-          (click)="updateScore(i, peserta._id)"
-        ></button>
-      </td>
     </tr>
   </ng-template>
+
+  <ng-template pTemplate="footer">
+    <tr>
+      <td colspan="3" class="p-text-right">Totals</td>
+      <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded"></button>
+    </tr>
+  </ng-template>
+
+  <!-- (click)="updateScore(i, peserta._id)" -->
+
   <ng-template pTemplate="emptymessage">
     <tr>
       <td colspan="7">No customers found.</td>

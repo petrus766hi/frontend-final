@@ -52,10 +52,10 @@ q {
   }
 }
 
-.image img {
-  animation-name: image;
+.animate__fadeInRight img {
+  animation-name: animate__fadeInRight;
 }
-@keyframes image {
+@keyframes animate__fadeInRight {
   0% {
     opacity: 0;
     transform: translate3d(100%, 0, 0);
