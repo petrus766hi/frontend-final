@@ -15,6 +15,7 @@ export class ListLombaComponent implements OnInit {
   pageSize = 10;
   tournaments: Tournament[];
   data = '';
+
   constructor(private listlomba: ListLombaService) {}
 
   ngOnInit() {

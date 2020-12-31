@@ -10,9 +10,10 @@ import { BracketComponent } from './bracket/bracket.component';
 
 import { NgxLoadingModule } from 'ngx-loading';
 import { WinnerComponent } from './winner/winner.component';
+import { PesertaComponent } from './peserta/peserta.component';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, LombaRoutingModule, NgbModule, SharedModule, NgxLoadingModule],
-  declarations: [LombaComponent, BracketComponent, WinnerComponent],
+  declarations: [LombaComponent, BracketComponent, WinnerComponent, PesertaComponent],
 })
 export class LombaModule {}

@@ -33,7 +33,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { FieldsetModule } from 'primeng/fieldset';
-
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 @NgModule({
   imports: [
     BrowserModule,
@@ -55,7 +55,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     RegisterModule,
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
     NgxLoadingModule.forRoot({}),
-
+    AnimateOnScrollModule.forRoot(),
     TableModule,
     ToastModule,
     CalendarModule,

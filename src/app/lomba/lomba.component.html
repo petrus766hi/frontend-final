@@ -31,12 +31,18 @@
         </ng-template>
       </li>
       <li [ngbNavItem]="3">
+        <a ngbNavLink>Peserta</a>
+        <ng-template ngbNavContent>
+          <app-peserta></app-peserta>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="4">
         <a ngbNavLink>Pertandingan</a>
         <ng-template ngbNavContent>
           <app-bracket [dataPeserta]="dataPeserta" [jumlahPeserta]="jumlahPeserta"></app-bracket>
         </ng-template>
       </li>
-      <li [ngbNavItem]="4">
+      <li [ngbNavItem]="5">
         <a ngbNavLink>Pemenang</a>
         <ng-template ngbNavContent>
           <app-winner></app-winner>
