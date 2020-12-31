@@ -48,10 +48,6 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    alert('form fields are validated successfully!');
-  }
-
   get username() {
     return this.regform.get('username') as FormControl;
   }

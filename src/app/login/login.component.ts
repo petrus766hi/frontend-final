@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import Swal from 'sweetalert2';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +14,17 @@ export class LoginComponent implements OnInit {
   version: string | null = environment.version;
   isLoading = false;
   active = 1;
-  Form = new FormControl('');
+  logform: FormGroup;
   public loginConnect: any = {};
   public loading = false;
   constructor(public authservice: AuthService, public router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.logform = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    });
+  }
 
   loginUser() {
     this.loading = true;
@@ -38,21 +43,23 @@ export class LoginComponent implements OnInit {
         if (response.data.role == 'peserta') {
           this.router.navigate(['home']);
         } else {
-          Swal.fire({
-            icon: 'success',
-            title: 'Berhasil Login Anda Adalah Peserta',
-            text: 'Selamat Datang' + ' ' + response.data.role,
-          });
+          this.router.navigate(['homeadmin']);
         }
       } else {
         this.loading = false;
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Email Dan Password Tidak Cocok',
-          footer: '<a href>Why do I have this issue?</a>',
+          text: response.error.error[0].msg,
         });
       }
     });
+  }
+
+  get email() {
+    return this.logform.get('email') as FormControl;
+  }
+  get password() {
+    return this.logform.get('password') as FormControl;
   }
 }

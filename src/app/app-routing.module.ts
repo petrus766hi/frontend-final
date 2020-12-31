@@ -16,6 +16,7 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: 'lomba/:names', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) },
   ]),
+  Shell.childRoutes([{ path: 'team', loadChildren: () => import('./team/team.module').then((m) => m.TeamModule) }]),
   Shell.childRoutes([
     { path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) },
   ]),
@@ -38,7 +39,44 @@ const routes: Routes = [
       loadChildren: () => import('./reset_password/reset_password.module').then((m) => m.Reset_PasswordModule),
     },
   ]),
-
+  Shell.childRoutes([
+    {
+      path: 'home_dashboard',
+      loadChildren: () => import('./home_dashboard/home_dashboard.module').then((m) => m.Home_DashboardModule),
+    },
+  ]),
+  Shell.childRoutes([{ path: 'user', loadChildren: () => import('./user/user.module').then((m) => m.UserModule) }]),
+  Shell.childRoutes([
+    {
+      path: 'tournament',
+      loadChildren: () => import('./about_dashboard/about_dashboard.module').then((m) => m.About_DashboardModule),
+    },
+  ]),
+  Shell.childRoutes([
+    {
+      path: 'tournament/detailpeserta',
+      loadChildren: () => import('./detailPeserta/detailPeserta.module').then((m) => m.DetailPesertaModule),
+    },
+  ]),
+  Shell.childRoutes([
+    {
+      path: 'tournament/detailpeserta/updatescore/:id',
+      loadChildren: () => import('./updatescore/updatescore.module').then((m) => m.UpdateScoreModule),
+    },
+  ]),
+  Shell.childRoutes([
+    {
+      path: 'home/panitia',
+      loadChildren: () => import('./editPanitia/editpanitia.module').then((m) => m.EditPanitiaModule),
+    },
+  ]),
+  Shell.childRoutes([{ path: 'new', loadChildren: () => import('./new/new.module').then((m) => m.NewModule) }]),
+  Shell.childRoutes([
+    {
+      path: 'homeadmin',
+      loadChildren: () => import('./home_dashboard/home_dashboard.module').then((m) => m.Home_DashboardModule),
+    },
+  ]),
   // Fallback when no prior route is matched
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

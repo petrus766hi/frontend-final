@@ -18,7 +18,7 @@
                   [ngClass]="{ 'is-invalid': username.errors && username.touched }"
                   class="form-control"
                   required
-                  minlength="2"
+                  minlength="3"
                 />
                 <div [hidden]="!username.errors?.required" class="invalid-feedback">Username is required</div>
                 <div [hidden]="!username.errors?.minlength" class="invalid-feedback">
@@ -31,15 +31,15 @@
                   name="password"
                   type="password"
                   [(ngModel)]="registerConnect.password"
-                  [ngClass]="{ 'is-invalid': usernamePassword.errors && usernamePassword.touched }"
                   #usernamePassword="ngModel"
+                  [ngClass]="{ 'is-invalid': usernamePassword.errors && usernamePassword.touched }"
                   class="form-control"
                   required
                   minlength="6"
                 />
                 <div [hidden]="!usernamePassword.errors?.required" class="invalid-feedback">Password is required</div>
                 <div [hidden]="!usernamePassword.errors?.minlength" class="invalid-feedback">
-                  Password must be at least 6 characters long
+                  Password must be at least 4 characters long
                 </div>
               </div>
               <div class="form-group">
@@ -48,12 +48,15 @@
                   name="email"
                   type="text"
                   [(ngModel)]="registerConnect.email"
+                  #usernameEmail="ngModel"
+                  [ngClass]="{ 'is-invalid': usernameEmail.errors && usernameEmail.touched }"
                   class="form-control"
-                  formControlName="email"
+                  required
+                  email
                 />
-                <div *ngIf="email.invalid && email.touched" class="text-danger">
-                  <div *ngIf="email.errors.required">Email is required</div>
-                  <div *ngIf="email.errors.email">Email not valid</div>
+                <div [hidden]="!usernameEmail.errors?.required" class="invalid-feedback">Email is required</div>
+                <div [hidden]="!usernameEmail.errors?.email" class="invalid-feedback">
+                  Please enter a valid email address
                 </div>
               </div>
               <div class="form-group">
@@ -73,14 +76,15 @@
                   name="phoneNumber"
                   type="text"
                   [(ngModel)]="registerConnect.phoneNumber"
+                  #usernamePhone="ngModel"
+                  [ngClass]="{ 'is-invalid': usernamePhone.errors && usernamePhone.touched }"
                   class="form-control"
-                  formControlName="phoneNumber"
                   required
-                  minlength="11"
+                  minlength="10"
                 />
-                <div *ngIf="phoneNumber.invalid && phoneNumber.touched" class="text-danger">
-                  <div *ngIf="phoneNumber.errors.required">phoneNumber is required</div>
-                  <div *ngIf="phoneNumber.errors.minlength">phoneNumber must be at least 10 characters long</div>
+                <div [hidden]="!usernamePhone.errors?.required" class="invalid-feedback">Phone number is required</div>
+                <div [hidden]="!usernamePhone.errors?.minlength" class="invalid-feedback">
+                  Phone number must be at least 10 characters long
                 </div>
               </div>
               <div class="form-group">

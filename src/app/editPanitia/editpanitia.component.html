@@ -1,0 +1,78 @@
+<div class="container mt-5">
+  <div class="row align-self-center">
+    <div class="col-md-6 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <h4>Edit Panitia</h4>
+        </div>
+        <div class="card-body">
+          <form action="index.html">
+            <div class="form-group">
+              <label for="Username">ID</label>
+              <input type="text" class="form-control" [(ngModel)]="panitia._id" name="_id" disabled />
+            </div>
+            <div class="form-group">
+              <label for="Username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="panitia.username"
+                #username="ngModel"
+                [ngClass]="{ 'is-invalid': username.errors && username.touched }"
+                class="form-control"
+                required
+                minlength="3"
+              />
+              <div [hidden]="!username.errors?.required" class="invalid-feedback">Username is required</div>
+              <div [hidden]="!username.errors?.minlength" class="invalid-feedback">
+                Username must be at least 3 characters long.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Email">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="panitia.email"
+                name="email"
+                #usernameEmail="ngModel"
+                [ngClass]="{ 'is-invalid': usernameEmail.errors && usernameEmail.touched }"
+                class="form-control"
+                required
+                email
+              />
+              <div [hidden]="!usernameEmail.errors?.required" class="invalid-feedback">Email is required</div>
+              <div [hidden]="!usernameEmail.errors?.email" class="invalid-feedback">
+                Please enter a valid email address
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="Subdistrict">District</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="panitia.subDistirict"
+                name="subDistirict"
+                #usernameDistrict="ngModel"
+                [ngClass]="{ 'is-invalid': usernameDistrict.errors && usernameDistrict.touched }"
+                class="form-control"
+                required
+              />
+              <div [hidden]="!usernameDistrict.errors?.required" class="invalid-feedback">District is required</div>
+            </div>
+            <div class="form-group">
+              <label for="Status">Status</label><br />
+              <p-checkbox
+                (onChange)="checkValue($event)"
+                binary="true"
+                [value]="panitia.is_active_peserta"
+              ></p-checkbox>
+            </div>
+            <input type="submit" value="Update" class="btn btn-dark btn-block" (click)="updateData()" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
