@@ -46,26 +46,21 @@ export class DetailPesertaComponent implements OnInit {
         this.peserta = result.data.tournaments.Id_Peserta;
       });
   }
-  updateScore(i: any, id: any) {
-    let score = {
-      fase1: this.peserta[i].fase1,
-      fase2: this.peserta[i].fase2,
-      fase3: this.peserta[i].fase3,
-    };
-    this.DetailPesertaService.updateScore(id, score)
+  updateScore() {
+    this.DetailPesertaService.updateScore(this.peserta)
       .pipe(
         finalize(() => {
           console.log('done');
         })
       )
-      .subscribe((result: { success: any; msg: any }) => {
+      .subscribe((result) => {
         if (result.success) {
           this.ngxLoader.stop();
           Swal.fire({
             icon: 'success',
             title: result.msg,
           });
-          this.router.navigate(['tournament']);
+          // this.router.navigate(['tournament']);
         } else {
           this.ngxLoader.stop();
           Swal.fire({

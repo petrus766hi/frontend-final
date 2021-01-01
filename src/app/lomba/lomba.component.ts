@@ -93,7 +93,6 @@ export class LombaComponent {
               })
             )
             .subscribe((res) => {
-              console.log('xx', res);
               if (res.success) {
                 this.loading = false;
                 this.UpdatePesertaRegister();
