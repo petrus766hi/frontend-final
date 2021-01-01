@@ -39,9 +39,6 @@ export class TeamComponent implements OnInit {
   get username() {
     return this.teamForm.get('username') as FormControl;
   }
-  get email() {
-    return this.teamForm.get('email') as FormControl;
-  }
   get phoneNumber() {
     return this.teamForm.get('phoneNumber') as FormControl;
   }

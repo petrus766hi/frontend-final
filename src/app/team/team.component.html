@@ -42,6 +42,13 @@
                   Phone number must be at least 10 characters long
                 </div>
               </div>
+              <div class="form-group">
+                <label for="inputState">Status</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Pilih</option>
+                  <option name="status" [(ngModel)]="teamLomba.status" value="peserta">Aktif</option>
+                </select>
+              </div>
               <input
                 class="btn-primary"
                 type="Submit"
