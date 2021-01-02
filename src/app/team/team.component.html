@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-6 mx-auto">
         <div class="card">
-          <div class="card-header">
-            <h4>Lomba Team</h4>
+          <div class="modal-header">
+            <h4>Tim Lomba</h4>
           </div>
           <div class="card-body">
             <form>
@@ -56,7 +56,7 @@
                 routerLink="/profile_update"
                 (click)="updateTeam()"
               />
-              <input class="btn-primary" type="Submit" value="Batalkan" routerLink="/profile" />
+              <input class="btn-primary" type="submit" value="Batalkan" routerLink="/profile" />
             </form>
           </div>
         </div>
@@ -64,6 +64,37 @@
     </div>
   </div>
 </section>
+
+<section id="formteamLomba" #customLoadingTemplate>
+  <div class="container" style="margin-top: 50px">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <div class="card">
+          <div class="modal-header">
+            <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+                  <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <ngb-panel title="Tim">
+                    <ng-template ngbPanelContent> Peserta </ng-template>
+                  </ngb-panel>
+                </ngb-accordion>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <ngx-loading
   [show]="loading"
   [config]="{ backdropBorderRadius: '3px' }"
