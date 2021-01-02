@@ -31,12 +31,22 @@
         </ng-template>
       </li>
       <li [ngbNavItem]="3">
+        <a ngbNavLink>Peserta</a>
+        <ng-template ngbNavContent>
+          <div class="row">
+            <div class="col-md-2" *ngFor="let group of is_group; let i = index" [attr.data-index]="i">
+              <app-peserta [data]="group.is_group"></app-peserta>
+            </div>
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="4">
         <a ngbNavLink>Pertandingan</a>
         <ng-template ngbNavContent>
           <app-bracket [dataPeserta]="dataPeserta" [jumlahPeserta]="jumlahPeserta"></app-bracket>
         </ng-template>
       </li>
-      <li [ngbNavItem]="4">
+      <li [ngbNavItem]="5">
         <a ngbNavLink>Pemenang</a>
         <ng-template ngbNavContent>
           <app-winner></app-winner>

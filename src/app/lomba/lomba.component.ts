@@ -21,6 +21,8 @@ export class LombaComponent {
   jumlahPeserta: number;
   dataPeserta: Array<any>;
   response: Boolean = false;
+  is_group: Array<any>;
+  data: Array<any>;
   constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService, private router: Router) {
     this.query = this.ActivatedRoutes.snapshot.paramMap.get('names');
   }
@@ -37,9 +39,11 @@ export class LombaComponent {
         })
       )
       .subscribe((res) => {
+        console.log('xxx', res.tournaments.Is_group[0].is_group);
         this.jumlahPeserta = res.tournaments.JumlahPeserta;
         this.detail = res.tournaments;
         this.dataPeserta = res.tournaments.Id_Peserta;
+        this.is_group = res.tournaments.Is_group;
       });
   }
   getPeserta() {
