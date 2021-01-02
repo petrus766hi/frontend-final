@@ -10,7 +10,6 @@ export class HeaderComponent implements OnInit {
   menuHidden = true;
   isWelcome: boolean;
   isLogin: boolean;
-  // logginUser: string;
   showUser: boolean;
   showAdmin: boolean;
   constructor() {}
@@ -41,11 +40,6 @@ export class HeaderComponent implements OnInit {
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
   }
-
-  // loggin() {
-  //   this.logginUser = localStorage.getItem('token');
-  //   return this.logginUser;
-  // }
 
   onLogout() {
     let keysToRemove = ['token', 'role', 'email', 'id'];

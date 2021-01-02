@@ -6,12 +6,14 @@ import { QuoteService } from '../quote.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import Swal from 'sweetalert2';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
+  modalForm: FormGroup;
   closeResult: string;
   public dataTournament: any = {
     NamaTournament: '',
@@ -63,6 +65,13 @@ export class ModalComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+
+    this.modalForm = new FormGroup({
+      namalomba: new FormControl('', [Validators.required]),
+      typelomba: new FormControl('', [Validators.required]),
+      jumlahpeserta: new FormControl('', [Validators.required]),
+      usiapeserta: new FormControl('', [Validators.required]),
+    });
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' }).result.then(
@@ -135,5 +144,18 @@ export class ModalComponent implements OnInit {
     };
     let id = localStorage.getItem('id');
     this.quoteService.UpdateRegisterPanitia(id, data).subscribe((res) => {});
+  }
+
+  get namalomba() {
+    return this.modalForm.get('namalomba') as FormControl;
+  }
+  get typelomba() {
+    return this.modalForm.get('typelomba') as FormControl;
+  }
+  get jumlahpeserta() {
+    return this.modalForm.get('jumlahpeserta') as FormControl;
+  }
+  get usiapeserta() {
+    return this.modalForm.get('usiapeserta') as FormControl;
   }
 }

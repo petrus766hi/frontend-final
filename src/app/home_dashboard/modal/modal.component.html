@@ -19,7 +19,11 @@
                   class="form-control"
                   name="NamaTournament"
                   [(ngModel)]="dataTournament.NamaTournament"
+                  #namalomba="ngModel"
+                  [ngClass]="{ 'is-invalid': namalomba.errors && namalomba.touched }"
+                  required
                 />
+                <div [hidden]="!namalomba.errors?.required" class="invalid-feedback">Nama Lomba is required</div>
               </div>
               <div class="form-group">
                 <label for="type">Type Lomba</label>
@@ -28,7 +32,11 @@
                   class="form-control"
                   name="TypeTournament"
                   [(ngModel)]="dataTournament.TypeTournament"
+                  #typelomba="ngModel"
+                  [ngClass]="{ 'is-invalid': typelomba.errors && typelomba.touched }"
+                  required
                 />
+                <div [hidden]="!typelomba.errors?.required" class="invalid-feedback">Type Lomba is required</div>
               </div>
               <div class="form-group">
                 <label for="jumlah">Jumlah Peserta</label>
@@ -37,7 +45,13 @@
                   class="form-control"
                   name="JumlahPeserta"
                   [(ngModel)]="dataTournament.JumlahPeserta"
+                  #jumlahpeserta="ngModel"
+                  [ngClass]="{ 'is-invalid': jumlahpeserta.errors && jumlahpeserta.touched }"
+                  required
                 />
+                <div [hidden]="!jumlahpeserta.errors?.required" class="invalid-feedback">
+                  Jumlah Peserta is required
+                </div>
               </div>
               <div class="form-group">
                 <label for="usia">Usia Peserta</label>
@@ -46,7 +60,13 @@
                   class="form-control"
                   name="UsiaTournament"
                   [(ngModel)]="dataTournament.UsiaTournament"
+                  #usiapeserta="ngModel"
+                  [ngClass]="{ 'is-invalid': usiapeserta.errors && usiapeserta.touched }"
+                  required
                 />
+                <div [hidden]="!jumlahpeserta.errors?.required" class="invalid-feedback">
+                  Jumlah Peserta is required
+                </div>
               </div>
               <div class="form-group">
                 <label for="kode">Kode Lomba</label>
@@ -59,19 +79,16 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="kode">Juara Lomba</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Pilih Juara</option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    Juara 1 Rp 500.000
-                  </option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    Juara 2 Rp 300.000
-                  </option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    Juara 3 Rp 200.000
-                  </option>
-                </select>
+                <label for="juaralomba">Juara Lomba</label>
+                <input type="number" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="juaralomba">Juara Lomba</label>
+                <input type="number" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="juaralomba">Juara Lomba</label>
+                <input type="number" class="form-control" />
               </div>
               <div class="form-group">
                 <label for="kode">Informasi</label>
