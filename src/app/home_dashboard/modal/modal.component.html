@@ -19,6 +19,7 @@
                   class="form-control"
                   name="NamaTournament"
                   [(ngModel)]="dataTournament.NamaTournament"
+                  [ngModelOptions]="{ standalone: true }"
                 />
               </div>
               <div class="form-group">
@@ -28,6 +29,7 @@
                   class="form-control"
                   name="TypeTournament"
                   [(ngModel)]="dataTournament.TypeTournament"
+                  [ngModelOptions]="{ standalone: true }"
                 />
               </div>
               <div class="form-group">
@@ -37,6 +39,7 @@
                   class="form-control"
                   name="JumlahPeserta"
                   [(ngModel)]="dataTournament.JumlahPeserta"
+                  [ngModelOptions]="{ standalone: true }"
                 />
               </div>
               <div class="form-group">
@@ -46,30 +49,20 @@
                   class="form-control"
                   name="UsiaTournament"
                   [(ngModel)]="dataTournament.UsiaTournament"
+                  [ngModelOptions]="{ standalone: true }"
                 />
               </div>
               <div class="form-group">
                 <label for="kode">Kode Lomba</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Pilih</option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">BDM</option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    KLRNG
-                  </option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="kode">Juara Lomba</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Pilih Juara</option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    Juara 1 Rp 500.000
-                  </option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    Juara 2 Rp 300.000
-                  </option>
-                  <option name="CodeTournament" [(ngModel)]="dataTournament.CodeTournament" value="peserta">
-                    Juara 3 Rp 200.000
+                <select
+                  id="inputState"
+                  class="form-control"
+                  name="CodeTournament"
+                  [(ngModel)]="dataTournament.CodeTournament"
+                >
+                  <option>Pilih</option>
+                  <option *ngFor="let master of dataMaster" [value]="master._id">
+                    {{ master.name }}
                   </option>
                 </select>
               </div>

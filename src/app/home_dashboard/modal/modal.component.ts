@@ -24,6 +24,7 @@ export class ModalComponent implements OnInit {
   };
   datas: any = [];
   register: boolean;
+  dataMaster: Array<any>;
 
   config: AngularEditorConfig = {
     editable: true,
@@ -63,6 +64,7 @@ export class ModalComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
+    this.getMaster();
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' }).result.then(
@@ -85,43 +87,44 @@ export class ModalComponent implements OnInit {
   }
 
   createTournament = () => {
-    this.ngxLoader.start();
-    if (this.register) {
-      this.ngxLoader.stop();
-      Swal.fire({
-        icon: 'error',
-        title: 'Mohon Maaf Ada Tidak Bisa Membuat Lomba 2x',
-        text: 'Hubungi Master',
-      });
-    } else {
-      this.quoteService
-        .createTournament(this.dataTournament)
-        .pipe(
-          finalize(() => {
-            console.log('Done');
-          })
-        )
-        .subscribe((result) => {
-          if (result.success) {
-            this.ngxLoader.stop();
-            this.UpdatePanitia();
-            Swal.fire({
-              icon: 'success',
-              title: result.msg,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['tournament']);
-              }
-            });
-          } else {
-            this.ngxLoader.stop();
-            Swal.fire({
-              icon: 'error',
-              title: result.msg,
-            });
-          }
-        });
-    }
+    console.log('xxx', this.dataTournament);
+    // this.ngxLoader.start();
+    // if (this.register) {
+    //   this.ngxLoader.stop();
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Mohon Maaf Ada Tidak Bisa Membuat Lomba 2x',
+    //     text: 'Hubungi Master',
+    //   });
+    // } else {
+    //   this.quoteService
+    //     .createTournament(this.dataTournament)
+    //     .pipe(
+    //       finalize(() => {
+    //         console.log('Done');
+    //       })
+    //     )
+    //     .subscribe((result) => {
+    //       if (result.success) {
+    //         this.ngxLoader.stop();
+    //         this.UpdatePanitia();
+    //         Swal.fire({
+    //           icon: 'success',
+    //           title: result.msg,
+    //         }).then((result) => {
+    //           if (result.isConfirmed) {
+    //             this.router.navigate(['tournament']);
+    //           }
+    //         });
+    //       } else {
+    //         this.ngxLoader.stop();
+    //         Swal.fire({
+    //           icon: 'error',
+    //           title: result.msg,
+    //         });
+    //       }
+    //     });
+    // }
   };
   getIdPanitia() {
     let id = localStorage.getItem('id');
@@ -135,5 +138,11 @@ export class ModalComponent implements OnInit {
     };
     let id = localStorage.getItem('id');
     this.quoteService.UpdateRegisterPanitia(id, data).subscribe((res) => {});
+  }
+
+  getMaster() {
+    this.quoteService.getMasterCodeTournament().subscribe((result) => {
+      this.dataMaster = result.data;
+    });
   }
 }

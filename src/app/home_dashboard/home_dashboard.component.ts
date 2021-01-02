@@ -25,6 +25,7 @@ export class Home_DashboardComponent implements OnInit {
   lengthPanitia: number;
   regform: FormGroup;
   public datas: any = [];
+  dataMaster: Array<any>;
   constructor(
     private quoteService: QuoteService,
     private modalService: NgbModal,

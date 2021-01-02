@@ -59,7 +59,13 @@ export class QuoteService {
     );
   }
   getAllTournament(): Observable<any> {
-    return this.httpClient.get(`${endpoint}api/tournament/tournament/`).pipe(
+    return this.httpClient.get(`${endpoint}/api/tournament/tournament/`).pipe(
+      map((body: any) => body),
+      catchError((err) => of(err))
+    );
+  }
+  getMasterCodeTournament(): Observable<any> {
+    return this.httpClient.get(`${endpoint}/api/getmasterlomba`).pipe(
       map((body: any) => body),
       catchError((err) => of(err))
     );
