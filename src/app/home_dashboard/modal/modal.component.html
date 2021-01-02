@@ -19,8 +19,11 @@
                   class="form-control"
                   name="NamaTournament"
                   [(ngModel)]="dataTournament.NamaTournament"
-                  [ngModelOptions]="{ standalone: true }"
+                  #namalomba="ngModel"
+                  [ngClass]="{ 'is-invalid': namalomba.errors && namalomba.touched }"
+                  required
                 />
+                <div [hidden]="!namalomba.errors?.required" class="invalid-feedback">Nama Lomba is required</div>
               </div>
               <div class="form-group">
                 <label for="type">Type Lomba</label>
@@ -29,8 +32,11 @@
                   class="form-control"
                   name="TypeTournament"
                   [(ngModel)]="dataTournament.TypeTournament"
-                  [ngModelOptions]="{ standalone: true }"
+                  #typelomba="ngModel"
+                  [ngClass]="{ 'is-invalid': typelomba.errors && typelomba.touched }"
+                  required
                 />
+                <div [hidden]="!typelomba.errors?.required" class="invalid-feedback">Type Lomba is required</div>
               </div>
               <div class="form-group">
                 <label for="jumlah">Jumlah Peserta</label>
@@ -39,8 +45,13 @@
                   class="form-control"
                   name="JumlahPeserta"
                   [(ngModel)]="dataTournament.JumlahPeserta"
-                  [ngModelOptions]="{ standalone: true }"
+                  #jumlahpeserta="ngModel"
+                  [ngClass]="{ 'is-invalid': jumlahpeserta.errors && jumlahpeserta.touched }"
+                  required
                 />
+                <div [hidden]="!jumlahpeserta.errors?.required" class="invalid-feedback">
+                  Jumlah Peserta is required
+                </div>
               </div>
               <div class="form-group">
                 <label for="usia">Usia Peserta</label>
@@ -49,8 +60,13 @@
                   class="form-control"
                   name="UsiaTournament"
                   [(ngModel)]="dataTournament.UsiaTournament"
-                  [ngModelOptions]="{ standalone: true }"
+                  #usiapeserta="ngModel"
+                  [ngClass]="{ 'is-invalid': usiapeserta.errors && usiapeserta.touched }"
+                  required
                 />
+                <div [hidden]="!jumlahpeserta.errors?.required" class="invalid-feedback">
+                  Jumlah Peserta is required
+                </div>
               </div>
               <div class="form-group">
                 <label for="kode">Kode Lomba</label>

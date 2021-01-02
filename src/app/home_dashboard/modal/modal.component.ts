@@ -6,12 +6,14 @@ import { QuoteService } from '../quote.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import Swal from 'sweetalert2';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
+  modalForm: FormGroup;
   closeResult: string;
   public dataTournament: any = {
     NamaTournament: '',
