@@ -23,6 +23,13 @@ export class LombaComponent {
   response: Boolean = false;
   is_group: Array<any>;
   data: Array<any>;
+  winner: Array<any>;
+  juara: any = {
+    juara1: '',
+    juara2: '',
+    juara3: '',
+  };
+  type_tournament: Boolean;
   constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService, private router: Router) {
     this.query = this.ActivatedRoutes.snapshot.paramMap.get('names');
   }
@@ -39,12 +46,26 @@ export class LombaComponent {
         })
       )
       .subscribe((res) => {
-        console.log('xxx', res.tournaments.Is_group[0].is_group);
+        console.log('xxx', res.tournaments.TypeTournament);
         this.jumlahPeserta = res.tournaments.JumlahPeserta;
         this.detail = res.tournaments;
         this.dataPeserta = res.tournaments.Id_Peserta;
         this.is_group = res.tournaments.Is_group;
+        this.winner = res.tournaments.Winner;
+        this.juara = {
+          juara1: res.tournaments.Juara1,
+          juara2: res.tournaments.Juara2,
+          juara3: res.tournaments.Juara3,
+        };
+        this.typeTournaments(res.tournaments.TypeTournament);
       });
+  }
+  typeTournaments(type: any) {
+    if (type === 'Single') {
+      return (this.type_tournament = true);
+    } else {
+      return (this.type_tournament = false);
+    }
   }
   getPeserta() {
     let id = localStorage.getItem('id');

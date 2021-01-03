@@ -17,6 +17,7 @@ export class DetailPesertaComponent implements OnInit {
   idParams: any = '';
   peserta: Peserta[];
   loading: boolean = true;
+  disableds: boolean = false;
 
   activityValues: number[] = [0, 100];
   UpdatescoreService: any;
@@ -49,33 +50,36 @@ export class DetailPesertaComponent implements OnInit {
       });
   }
   updateScore() {
-    // console.log('xxx', this.peserta);
-    // console.log('id', this.idParams);
-    this.DetailPesertaService.updateWinner('5fd854fc4fe86500176bebf7', this.peserta).subscribe((result) => {
-      console.log('xxx', result);
+    this.DetailPesertaService.updateScore(this.peserta)
+      .pipe(
+        finalize(() => {
+          console.log('done');
+        })
+      )
+      .subscribe((result) => {
+        if (result.success) {
+          this.ngxLoader.stop();
+          Swal.fire({
+            icon: 'success',
+            title: result.msg,
+          });
+          this.router.navigate(['tournament']);
+        } else {
+          this.ngxLoader.stop();
+          Swal.fire({
+            icon: 'error',
+            title: result.msg,
+          });
+        }
+      });
+  }
+  updateWinner() {
+    this.DetailPesertaService.updateWinner(this.idParams, this.peserta).subscribe((result) => {
+      if (result.success) {
+        this.disableds = true;
+      } else {
+        this.disableds = false;
+      }
     });
-
-    //   this.DetailPesertaService.updateScore(this.peserta)
-    //     .pipe(
-    //       finalize(() => {
-    //         console.log('done');
-    //       })
-    //     )
-    //     .subscribe((result) => {
-    //       if (result.success) {
-    //         this.ngxLoader.stop();
-    //         Swal.fire({
-    //           icon: 'success',
-    //           title: result.msg,
-    //         });
-    //         this.router.navigate(['tournament']);
-    //       } else {
-    //         this.ngxLoader.stop();
-    //         Swal.fire({
-    //           icon: 'error',
-    //           title: result.msg,
-    //         });
-    //       }
-    //     });
   }
 }

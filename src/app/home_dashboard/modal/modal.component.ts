@@ -21,6 +21,7 @@ export class ModalComponent implements OnInit {
     JumlahPeserta: '',
     UsiaTournament: '',
     CodeTournament: '',
+    JuaraTournament: '',
     Informasi: '',
     Pendaftaran: '',
     Juara1: '',

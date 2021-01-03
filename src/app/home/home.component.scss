@@ -17,9 +17,8 @@ q {
 }
 .homecontent {
   position: absolute;
-  top: 50%;
-  left: 40%;
-  transform: translate(-50%, -50%);
+  top: 65%;
+  left: 10%;
 }
 .homecontent h1 {
   color: white;
@@ -31,6 +30,7 @@ q {
 @media screen and (max-width: 600px) {
   .homecontent h1 {
     font-size: 20px;
+    margin-top: 40%;
   }
   .home img {
     height: 700px;

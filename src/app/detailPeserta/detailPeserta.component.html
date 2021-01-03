@@ -58,13 +58,13 @@
         {{ peserta.name }}
       </td>
       <td>
-        <input [(ngModel)]="peserta.fase1" style="width: 60px" type="number" />
+        <input [(ngModel)]="peserta.fase1" style="width: 60px" type="number" [(disabled)]="disableds" />
       </td>
       <td>
-        <input [(ngModel)]="peserta.fase2" style="width: 60px" type="number" />
+        <input [(ngModel)]="peserta.fase2" style="width: 60px" type="number" [(disabled)]="disableds" />
       </td>
       <td>
-        <input [(ngModel)]="peserta.fase3" style="width: 60px" type="number" />
+        <input [(ngModel)]="peserta.fase3" style="width: 60px" type="number" [(disabled)]="disableds" />
       </td>
     </tr>
   </ng-template>
@@ -73,6 +73,7 @@
     <tr>
       <td colspan="4" class="p-text-left">
         <button pButton type="button" label="Update Score" (click)="updateScore()"></button>
+        <button pButton type="button" label="Finish Tournament" (click)="updateWinner()"></button>
       </td>
     </tr>
   </ng-template>
