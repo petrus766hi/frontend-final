@@ -27,16 +27,16 @@
               </div>
               <div class="form-group">
                 <label for="type">Type Lomba</label>
-                <input
-                  type="text"
+                <select
+                  id="inputState"
                   class="form-control"
                   name="TypeTournament"
                   [(ngModel)]="dataTournament.TypeTournament"
-                  #typelomba="ngModel"
-                  [ngClass]="{ 'is-invalid': typelomba.errors && typelomba.touched }"
-                  required
-                />
-                <div [hidden]="!typelomba.errors?.required" class="invalid-feedback">Type Lomba is required</div>
+                >
+                  <option>Pilih</option>
+                  <option value="Grup">Grup</option>
+                  <option value="Single">Single</option>
+                </select>
               </div>
               <div class="form-group">
                 <label for="jumlah">Jumlah Peserta</label>
@@ -81,6 +81,18 @@
                     {{ master.name }}
                   </option>
                 </select>
+              </div>
+              <div class="form-group">
+                <label for="juaralomba">Hadiah Juara 1</label>
+                <input type="number" class="form-control" name="Juara1" [(ngModel)]="dataTournament.Juara1" />
+              </div>
+              <div class="form-group">
+                <label for="juaralomba">Hadiah Juara 2</label>
+                <input type="number" class="form-control" name="Juara2" [(ngModel)]="dataTournament.Juara2" />
+              </div>
+              <div class="form-group">
+                <label for="juaralomba">Hadiah Juara 3</label>
+                <input type="number" class="form-control" name="Juara3" [(ngModel)]="dataTournament.Juara3" />
               </div>
               <div class="form-group">
                 <label for="kode">Informasi</label>

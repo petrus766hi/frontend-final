@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class DetailPesertaComponent implements OnInit {
   id: any = '';
+  idParams: any = '';
   peserta: Peserta[];
   loading: boolean = true;
 
@@ -26,6 +27,7 @@ export class DetailPesertaComponent implements OnInit {
     private ngxLoader: NgxUiLoaderService
   ) {
     this.id = this.activeroute.snapshot.queryParams.idTournament;
+    this.idParams = this.activeroute.snapshot.queryParams.idTournaments;
   }
 
   ngOnInit() {
@@ -47,28 +49,33 @@ export class DetailPesertaComponent implements OnInit {
       });
   }
   updateScore() {
-    this.DetailPesertaService.updateScore(this.peserta)
-      .pipe(
-        finalize(() => {
-          console.log('done');
-        })
-      )
-      .subscribe((result) => {
-        if (result.success) {
-          this.ngxLoader.stop();
-          Swal.fire({
-            icon: 'success',
-            title: result.msg,
-          });
-          // this.router.navigate(['tournament']);
-        } else {
-          this.ngxLoader.stop();
-          Swal.fire({
-            icon: 'error',
-            title: result.msg,
-          });
-        }
-      });
-    // this.router.navigate(['tournament/detailpeserta/updatescore/', id]);
+    // console.log('xxx', this.peserta);
+    // console.log('id', this.idParams);
+    this.DetailPesertaService.updateWinner('5fd854fc4fe86500176bebf7', this.peserta).subscribe((result) => {
+      console.log('xxx', result);
+    });
+
+    //   this.DetailPesertaService.updateScore(this.peserta)
+    //     .pipe(
+    //       finalize(() => {
+    //         console.log('done');
+    //       })
+    //     )
+    //     .subscribe((result) => {
+    //       if (result.success) {
+    //         this.ngxLoader.stop();
+    //         Swal.fire({
+    //           icon: 'success',
+    //           title: result.msg,
+    //         });
+    //         this.router.navigate(['tournament']);
+    //       } else {
+    //         this.ngxLoader.stop();
+    //         Swal.fire({
+    //           icon: 'error',
+    //           title: result.msg,
+    //         });
+    //       }
+    //     });
   }
 }
