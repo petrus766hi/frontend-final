@@ -1,0 +1,87 @@
+<p-table
+  #dt1
+  [value]="peserta"
+  dataKey="_id"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [loading]="loading"
+  styleClass="p-datatable-customers p-datatable-gridlines"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="['name']"
+>
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex">
+      <span class="p-input-icon-left p-mr-auto">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          (input)="dt1.filterGlobal($event.target.value, 'contains')"
+          placeholder="Search keyword"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Name
+          <!-- <p-columnFilter type="text" field="country.username" display="menu"></p-columnFilter> -->
+        </div>
+      </th>
+      <th>
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Score 1
+          <!-- <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter> -->
+        </div>
+      </th>
+      <th>
+        <div class="p-d-flex p-jc-between p-ai-center">Score 2</div>
+      </th>
+      <th>
+        <div class="p-d-flex p-jc-between p-ai-center">
+          Score 3
+          <!-- <p-columnFilter type="numeric" field="balance" display="menu" currency="USD"></p-columnFilter> -->
+        </div>
+      </th>
+      <!-- <th>
+        <div class="p-d-flex p-jc-between p-ai-center">Action</div>
+      </th> -->
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-peserta>
+    <tr>
+      <td>
+        {{ peserta.name }}
+      </td>
+      <td>
+        <input [(ngModel)]="peserta.fase1" style="width: 60px" type="number" [(disabled)]="disableds" />
+      </td>
+      <td>
+        <input [(ngModel)]="peserta.fase2" style="width: 60px" type="number" [(disabled)]="disableds" />
+      </td>
+      <td>
+        <input [(ngModel)]="peserta.fase3" style="width: 60px" type="number" [(disabled)]="disableds" />
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <tr>
+      <td colspan="4" class="p-text-left">
+        <button pButton type="button" label="Update Score" (click)="updateScore()"></button>
+        <button pButton type="button" label="Finish Tournament" (click)="updateWinner()"></button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="7">No customers found.</td>
+    </tr>
+  </ng-template>
+</p-table>
+<ngx-ui-loader></ngx-ui-loader>

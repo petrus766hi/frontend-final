@@ -1,24 +1,39 @@
-<section id="search" class="py-4 mb-4 bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 ml-auto">
-        <div class="form-group">
-          <select id="inputState" class="form-control">
-            <option selected>Pilih</option>
-            <option name="roles" value="-1">Aktif</option>
-            <option name="roles" value="1">Tidak Aktif</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Cari Perlombaan" />
-          <div class="input-group-append">
-            <button type="button" class="btn btn-success">Success</button>
-          </div>
-        </div>
+<div class="container">
+  <ul ngbNav #nav="ngbNav" [activeId]="2" class="nav-tabs justify-content-center">
+    <li ngbDropdown class="nav-item">
+      <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Lomba</a>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem (click)="getIsActive(true)">Aktif</button>
+        <button ngbDropdownItem (click)="getIsActive(false)">Tidak Aktif</button>
+        <div class="dropdown-divider"></div>
       </div>
-    </div>
-  </div>
-</section>
+    </li>
+    <li ngbDropdown class="nav-item">
+      <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Sort</a>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem (click)="getIsSort('desc')">A-Z</button>
+        <button ngbDropdownItem (click)="getIsSort('asc')">Z-A</button>
+        <div class="dropdown-divider"></div>
+      </div>
+    </li>
+    <!-- <li ngbDropdown class="nav-item">
+      <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Area</a>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem>Setiabudi</button>
+        <button ngbDropdownItem>Kalibata</button>
+        <button ngbDropdownItem>Pancoran</button>
+        <div class="dropdown-divider"></div>
+      </div>
+    </li> -->
+    <li ngbNavItem class="ml-auto">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </li>
+  </ul>
+</div>
+
 <section>
   <div class="container">
     <div class="row">
@@ -39,6 +54,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ turnament.NamaTournament }}</h5>
                   <p class="card-text">Area : {{ turnament.SubDistrict }}</p>
+                  <p class="card-text" [innerHTML]="finish(turnament.Is_finish)"></p>
                   <p class="card-text" [innerHTML]="status(turnament.Is_active)"></p>
                   <p class="card-text" [innerHTML]="avail(turnament.JumlahPeserta, turnament.Id_Peserta)"></p>
                   <p class="card-text">Jumlah Peserta : {{ turnament.JumlahPeserta }}</p>

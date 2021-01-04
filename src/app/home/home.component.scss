@@ -7,3 +7,61 @@ q {
   font-size: 1.2rem;
   quotes: "« " " »";
 }
+
+/* home */
+.home img {
+  width: 100%;
+  height: 600px;
+  object-position: center;
+  object-fit: cover;
+}
+.homecontent {
+  position: absolute;
+  top: 65%;
+  left: 10%;
+}
+.homecontent h1 {
+  color: white;
+  font-size: 40px;
+}
+.homecontent a {
+  margin-top: 10px;
+}
+@media screen and (max-width: 600px) {
+  .homecontent h1 {
+    font-size: 20px;
+    margin-top: 40%;
+  }
+  .home img {
+    height: 700px;
+  }
+}
+
+/* lomba */
+.card img {
+  animation: drop 1.5s ease;
+}
+@keyframes drop {
+  0% {
+    opacity: 0;
+    transform: translate(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animate__fadeInRight img {
+  animation-name: animate__fadeInRight;
+}
+@keyframes animate__fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}

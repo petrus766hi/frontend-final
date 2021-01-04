@@ -1,6 +1,6 @@
-<header>
+<header *ngIf="showUser">
   <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-    <a class="navbar-brand" routerLink="/home">TUJUH BELAS</a>
+    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>TUJUH BELAS</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -11,7 +11,7 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none">
+    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
       <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/home" routerLinkActive="active">
           <i class="fas fa-home"></i>
@@ -30,7 +30,6 @@
         <li class="nav-item nav-link" *ngIf="isLogin">
           <button type="button" routerLink="/login" class="btn btn-outline-warning">Login</button>
         </li>
-
         <div class="col" *ngIf="isWelcome">
           <div ngbDropdown class="d-inline-block">
             <li class="nav-item nav-link">
@@ -49,6 +48,51 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<header *ngIf="showAdmin">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://github.com/ngx-rocket" translate>Admin</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      aria-controls="navbar-menu"
+      aria-label="Toggle navigation"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="!menuHidden"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link text-uppercase" routerLink="/homeadmin" routerLinkActive="active">
+          <i class="fas fa-home"></i>
+          <span translate>Beranda</span>
+        </a>
+        <a class="nav-item nav-link text-uppercase" routerLink="/tournament" routerLinkActive="active">
+          <i class="fab fa-accessible-icon"></i>
+          <span translate>Lomba</span>
+        </a>
+        <a class="nav-item nav-link text-uppercase" routerLink="/user" routerLinkActive="active">
+          <i class="fas fa-child"></i>
+          <span translate>Peserta</span>
+        </a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a
+            class="nav-item nav-link text-uppercase"
+            routerLinkActive="active"
+            routerLink="/login"
+            (click)="onLogout()"
+          >
+            <i class="far fa-user-circle"></i>
+            <span translate>Log Out</span>
+          </a>
+        </li>
       </div>
     </div>
   </nav>

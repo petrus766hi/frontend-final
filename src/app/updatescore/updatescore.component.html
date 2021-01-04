@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto py-4">
+      <div class="card">
+        <div class="card-body">
+          <form action="index.html">
+            <div class="form-group">
+              <label for="nama">ID Peserta</label>
+              <input type="text" class="form-control" name="id" [(ngModel)]="dataPeserta.id" disabled />
+            </div>
+            <div class="form-group">
+              <label for="nama">Nama Peserta</label>
+              <input type="text" class="form-control" name="NamaTournament" [(ngModel)]="dataPeserta.name" disabled />
+            </div>
+            <div class="form-group">
+              <label for="type">Score 1</label>
+              <input type="number" class="form-control" name="fase1" [(ngModel)]="dataPeserta.fase1" />
+            </div>
+            <div class="form-group">
+              <label for="jumlah">Score 2</label>
+              <input type="number" class="form-control" name="fase2" [(ngModel)]="dataPeserta.fase2" />
+            </div>
+            <div class="form-group">
+              <label for="usia">Score 3</label>
+              <input type="number" class="form-control" name="fase2" [(ngModel)]="dataPeserta.fase3" />
+            </div>
+            <input type="submit" value="Update" class="btn btn-dark btn-block" (click)="updateScore(dataPeserta._id)" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader></ngx-ui-loader>

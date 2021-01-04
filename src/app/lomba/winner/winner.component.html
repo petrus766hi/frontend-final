@@ -1,0 +1,55 @@
+<div class="card-group" style="margin-bottom: 50px">
+  <div class="card">
+    <img
+      src="https://i.pinimg.com/474x/ad/f8/72/adf872c441bc9470db48b6ce2fbec2fc.jpg"
+      style="width: 200px; height: 200px"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Juara 1</h5>
+      <p class="card-text">Rp {{ juara.juara1 }}</p>
+    </div>
+  </div>
+  <div class="card">
+    <img
+      src="https://png.pngtree.com/png-vector/20191027/ourlarge/pngtree-silver-medal-vector-best-first-placement-winner-champion-number-one-2nd-png-image_1888381.jpg"
+      style="width: 200px; height: 200px"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Juara 2</h5>
+      <p class="card-text">Rp {{ juara.juara2 }}</p>
+    </div>
+  </div>
+  <div class="card">
+    <img
+      src="https://png.pngtree.com/png-vector/20191027/ourlarge/pngtree-bronze-medal-vector-best-first-placement-winner-champion-number-one-3rd-png-image_1887553.jpg"
+      style="width: 200px; height: 200px"
+      class="card-img-top"
+      alt="..."
+    />
+    <div class="card-body">
+      <h5 class="card-title">Juara 3</h5>
+      <p class="card-text">Rp {{ juara.juara3 }}</p>
+    </div>
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Juara</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Area</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let winners of winner; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ winners.username }}</td>
+      <td>{{ winners.subDistirict }}</td>
+    </tr>
+  </tbody>
+</table>
