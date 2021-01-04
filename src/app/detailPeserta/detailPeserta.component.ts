@@ -74,9 +74,12 @@ export class DetailPesertaComponent implements OnInit {
       });
   }
   updateWinner() {
+    let is_finish = { finish: true };
     this.DetailPesertaService.updateWinner(this.idParams, this.peserta).subscribe((result) => {
       if (result.success) {
-        this.disableds = true;
+        this.DetailPesertaService.finish(this.idParams, is_finish).subscribe((res) => {
+          console.log('finish', res);
+        });
       } else {
         this.disableds = false;
       }

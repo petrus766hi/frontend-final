@@ -12,9 +12,17 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { WinnerComponent } from './winner/winner.component';
 import { PesertaComponent } from './peserta/peserta.component';
 import { SingleComponent } from './single/single.component';
+import { FreeAllComponent } from './free-all/free-all.component';
 
 @NgModule({
   imports: [CommonModule, TranslateModule, LombaRoutingModule, NgbModule, SharedModule, NgxLoadingModule],
-  declarations: [LombaComponent, BracketComponent, WinnerComponent, PesertaComponent, SingleComponent],
+  declarations: [
+    LombaComponent,
+    BracketComponent,
+    WinnerComponent,
+    PesertaComponent,
+    SingleComponent,
+    FreeAllComponent,
+  ],
 })
 export class LombaModule {}

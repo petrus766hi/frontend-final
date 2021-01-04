@@ -44,7 +44,12 @@
       <li [ngbNavItem]="4">
         <a ngbNavLink>Pertandingan</a>
         <ng-template ngbNavContent>
-          <app-bracket [dataPeserta]="dataPeserta" [jumlahPeserta]="jumlahPeserta"></app-bracket>
+          <!-- <app-bracket
+            *ngIf="type_tournament"
+            [dataPeserta]="dataPeserta"
+            [jumlahPeserta]="jumlahPeserta"
+          ></app-bracket> -->
+          <app-free-all [dataPeserta]="dataPeserta"></app-free-all>
         </ng-template>
       </li>
       <li [ngbNavItem]="5">

@@ -6,7 +6,8 @@ import { catchError, map } from 'rxjs/operators';
 const routes = {
   getOne: (id: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/${id}`,
   update: () => `https://backendsfinal.herokuapp.com/api/peserta/updatescore`,
-  winner: (id: any) => `http://localhost:3000/api/tournament/tournament/winner/${id}`,
+  winner: (id: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/winner/${id}`,
+  finish: (id: any) => `http://localhost:3000/api/tournament/tournament/finish/${id}`,
 };
 
 @Injectable({
@@ -29,6 +30,12 @@ export class DetailPesertaService {
   }
   updateWinner(id: any, data: any): Observable<any> {
     return this.httpclient.put(routes.winner(id), data).pipe(
+      map((body: any) => body),
+      catchError((err) => of(err))
+    );
+  }
+  finish(id: any, data: any): Observable<any> {
+    return this.httpclient.put(routes.finish(id), data).pipe(
       map((body: any) => body),
       catchError((err) => of(err))
     );
