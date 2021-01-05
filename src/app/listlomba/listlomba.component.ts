@@ -71,6 +71,7 @@ export class ListLombaComponent implements OnInit {
       const data = this.tournaments.filter((e) => {
         return e.NamaTournament.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
       });
+      console.log('xxx', this.tournaments);
       this.tournaments = data;
     } else {
       this.ngOnInit();
