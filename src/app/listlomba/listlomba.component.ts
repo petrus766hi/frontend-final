@@ -16,6 +16,7 @@ export class ListLombaComponent implements OnInit {
   pageSize = 10;
   tournaments: Tournament[];
   data = '';
+  search: string = '';
 
   constructor(private listlomba: ListLombaService) {}
 
@@ -64,5 +65,15 @@ export class ListLombaComponent implements OnInit {
     this.listlomba.getAllTournamentSort(aa).subscribe((res) => {
       this.tournaments = res;
     });
+  }
+  onSearch() {
+    if (this.search != '') {
+      const data = this.tournaments.filter((e) => {
+        return e.NamaTournament.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
+      });
+      this.tournaments = data;
+    } else {
+      this.ngOnInit();
+    }
   }
 }
