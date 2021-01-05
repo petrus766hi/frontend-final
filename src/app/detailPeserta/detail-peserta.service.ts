@@ -7,7 +7,7 @@ const routes = {
   getOne: (id: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/${id}`,
   update: () => `https://backendsfinal.herokuapp.com/api/peserta/updatescore`,
   winner: (id: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/winner/${id}`,
-  finish: (id: any) => `http://localhost:3000/api/tournament/tournament/finish/${id}`,
+  finish: (id: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/finish/${id}`,
 };
 
 @Injectable({

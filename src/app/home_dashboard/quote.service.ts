@@ -60,7 +60,7 @@ export class QuoteService {
   }
   getAllTournament(): Observable<any> {
     return this.httpClient.get(`${endpoint}/api/tournament/tournament/`).pipe(
-      map((body: any) => body),
+      map((body: any) => body.data.tournaments),
       catchError((err) => of(err))
     );
   }

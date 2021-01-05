@@ -26,7 +26,9 @@
         <a ngbNavLink>Pendaftaran</a>
         <ng-template ngbNavContent>
           <p [innerHTML]="detail.Informasi"></p>
-          <button type="button" class="btn btn-primary" (click)="registerLomba(detail)">Daftar</button><br />
+          <button type="button" class="btn btn-primary" (click)="registerLomba(detail)" [disabled]="is_finish == true">
+            Daftar</button
+          ><br />
           <br />
         </ng-template>
       </li>
@@ -44,12 +46,12 @@
       <li [ngbNavItem]="4">
         <a ngbNavLink>Pertandingan</a>
         <ng-template ngbNavContent>
-          <!-- <app-bracket
+          <app-bracket
             *ngIf="type_tournament"
             [dataPeserta]="dataPeserta"
             [jumlahPeserta]="jumlahPeserta"
-          ></app-bracket> -->
-          <app-free-all [dataPeserta]="dataPeserta"></app-free-all>
+          ></app-bracket>
+          <app-free-all *ngIf="!type_tournament" [dataPeserta]="dataPeserta"></app-free-all>
         </ng-template>
       </li>
       <li [ngbNavItem]="5">
