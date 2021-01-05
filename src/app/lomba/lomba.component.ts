@@ -30,6 +30,7 @@ export class LombaComponent {
     juara3: '',
   };
   type_tournament: Boolean;
+  is_finish: Boolean;
   constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService, private router: Router) {
     this.query = this.ActivatedRoutes.snapshot.paramMap.get('names');
   }
@@ -46,7 +47,7 @@ export class LombaComponent {
         })
       )
       .subscribe((res) => {
-        console.log('xxx', res.tournaments.TypeTournament);
+        console.log('xxx', res.tournaments.Is_finish);
         this.jumlahPeserta = res.tournaments.JumlahPeserta;
         this.detail = res.tournaments;
         this.dataPeserta = res.tournaments.Id_Peserta;
@@ -58,10 +59,12 @@ export class LombaComponent {
           juara3: res.tournaments.Juara3,
         };
         this.typeTournaments(res.tournaments.TypeTournament);
+        this.is_finish = res.tournaments.Is_finish;
       });
   }
+
   typeTournaments(type: any) {
-    if (type === 'Single') {
+    if (type === 'Single' || type === 'Grup') {
       return (this.type_tournament = true);
     } else {
       return (this.type_tournament = false);

@@ -57,6 +57,7 @@ export class DetailPesertaComponent implements OnInit {
         })
       )
       .subscribe((result) => {
+        console.log('result', result);
         if (result.success) {
           this.ngxLoader.stop();
           Swal.fire({

@@ -72,8 +72,20 @@
   <ng-template pTemplate="footer">
     <tr>
       <td colspan="4" class="p-text-left">
-        <button pButton type="button" label="Update Score" (click)="updateScore()"></button>
-        <button pButton type="button" label="Finish Tournament" (click)="updateWinner()"></button>
+        <button
+          pButton
+          type="button"
+          label="Update Score"
+          [disabled]="peserta.length == 0"
+          (click)="updateScore()"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Finish Tournament"
+          [disabled]="peserta.length == 0"
+          (click)="updateWinner()"
+        ></button>
       </td>
     </tr>
   </ng-template>
