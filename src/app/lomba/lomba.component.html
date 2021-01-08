@@ -35,12 +35,12 @@
       <li [ngbNavItem]="3">
         <a ngbNavLink>Peserta</a>
         <ng-template ngbNavContent>
-          <div class="row" *ngIf="!type_tournament">
+          <div class="row" *ngIf="peserta_grup">
             <div class="col-md-2" *ngFor="let group of is_group; let i = index" [attr.data-index]="i">
-              <app-peserta [data]="group.is_group"></app-peserta>
+              <app-peserta [data]="group.is_group" [team]="group.username"></app-peserta>
             </div>
           </div>
-          <app-single *ngIf="type_tournament" [dataPeserta]="dataPeserta"></app-single>
+          <app-single *ngIf="!peserta_grup" [dataPeserta]="dataPeserta"></app-single>
         </ng-template>
       </li>
       <li [ngbNavItem]="4">

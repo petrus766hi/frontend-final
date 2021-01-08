@@ -9,5 +9,7 @@ export class SingleComponent implements OnInit {
   @Input() dataPeserta: [];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('xxx', this.dataPeserta);
+  }
 }
