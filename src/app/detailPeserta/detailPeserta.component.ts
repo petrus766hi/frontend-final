@@ -45,8 +45,10 @@ export class DetailPesertaComponent implements OnInit {
         })
       )
       .subscribe((result) => {
+        console.log('xxx', result.data);
         this.ngxLoader.stop();
         this.peserta = result.data.tournaments.Id_Peserta;
+        this.disableds = result.data.tournaments.Is_finish;
       });
   }
   updateScore() {

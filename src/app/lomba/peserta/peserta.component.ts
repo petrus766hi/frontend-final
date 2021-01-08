@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PesertaComponent implements OnInit {
   constructor() {}
   @Input() data: {};
+  @Input() team: '';
   ngOnInit(): void {
     console.log('data', this.data);
   }

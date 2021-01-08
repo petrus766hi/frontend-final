@@ -14,6 +14,9 @@ export interface RandomQuoteContext {
   providedIn: 'root',
 })
 export class QuoteService {
+  getRandomQuote(arg0: { category: string }) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private httpClient: HttpClient) {}
 
   getAllPanitia(): Observable<any> {

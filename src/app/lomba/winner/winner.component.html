@@ -47,9 +47,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let winners of winner; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{ winners.username }}</td>
-      <td>{{ winners.subDistirict }}</td>
+      <th *ngIf="i < 3" scope="row">{{ i + 1 }}</th>
+      <td *ngIf="i < 3">{{ winners.username }}</td>
+      <td *ngIf="i < 3">{{ winners.subDistirict }}</td>
     </tr>
   </tbody>
 </table>
