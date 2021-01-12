@@ -37,7 +37,7 @@
   </div>
 </div>
 
-<table class="table table-bordered">
+<table class="table table-bordered" *ngIf="is_finish === true">
   <thead>
     <tr>
       <th scope="col">Juara</th>
@@ -53,3 +53,6 @@
     </tr>
   </tbody>
 </table>
+<div style="margin-bottom: 10%" *ngIf="is_finish === false">
+  <h4 style="text-align: center">Mohon Maaf Lomba Masih Berlangsung, Mohon Cek Setelah Lomba Selesai</h4>
+</div>

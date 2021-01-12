@@ -13,6 +13,7 @@ export class WinnerComponent implements OnInit {
   id: any = '';
   @Input() winner: Array<any>;
   @Input() juara: any;
+  @Input() is_finish: any;
   constructor(public route: Router, public winnerservice: WinnerService) {}
 
   ngOnInit(): void {
