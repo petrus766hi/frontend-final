@@ -65,10 +65,12 @@ export class LombaComponent {
   }
 
   typeTournaments(type: any) {
-    if (type === 'Single' || type === 'Grup') {
+    if (type == 'Single' || type == 'Grup') {
       return (this.type_tournament = true);
+      // console.log('true');
     } else {
       return (this.type_tournament = false);
+      // console.log('false');
     }
   }
   pesertaTournaments(type: any) {
