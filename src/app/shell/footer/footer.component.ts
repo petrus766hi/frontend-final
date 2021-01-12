@@ -7,12 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   menuHidden = true;
-
+  showUser: boolean;
+  showAdmin: boolean;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.showHeaderAdmin();
+  }
 
   toggleMenu() {
     this.menuHidden = !this.menuHidden;
+  }
+
+  showHeaderAdmin() {
+    let roleAdmin = localStorage.getItem('role');
+    if (roleAdmin == 'panitia' || roleAdmin == 'master') {
+      this.showUser = false;
+      this.showAdmin = true;
+    } else {
+      this.showUser = true;
+      this.showAdmin = false;
+    }
   }
 }

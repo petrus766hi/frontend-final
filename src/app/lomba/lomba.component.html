@@ -41,6 +41,9 @@
             </div>
           </div>
           <app-single *ngIf="!peserta_grup" [dataPeserta]="dataPeserta"></app-single>
+          <div style="margin-bottom: 10%" *ngIf="is_group.length < 1">
+            <h4 style="text-align: center">Mohon Maaf Lomba Masih Berlangsung, Mohon Cek Setelah Lomba Selesai</h4>
+          </div>
         </ng-template>
       </li>
       <li [ngbNavItem]="4">
