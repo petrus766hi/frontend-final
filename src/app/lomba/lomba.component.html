@@ -35,18 +35,12 @@
       <li [ngbNavItem]="3">
         <a ngbNavLink>Peserta</a>
         <ng-template ngbNavContent>
-          <div *ngIf="is_group.length > 1">
-            <div class="row" *ngIf="peserta_grup">
-              <div class="col-md-2" *ngFor="let group of is_group; let i = index" [attr.data-index]="i">
-                <app-peserta [data]="group.is_group" [team]="group.username"></app-peserta>
-              </div>
+          <div class="row" *ngIf="peserta_grup">
+            <div class="col-md-2" *ngFor="let group of is_group; let i = index" [attr.data-index]="i">
+              <app-peserta [data]="group.is_group" [team]="group.username"></app-peserta>
             </div>
-            <app-single *ngIf="!peserta_grup" [dataPeserta]="dataPeserta"></app-single>
           </div>
-
-          <div style="margin-bottom: 10%" *ngIf="is_group.length < 1">
-            <h4 style="text-align: center">Mohon Maaf Lomba Masih Berlangsung, Mohon Cek Setelah Lomba Selesai</h4>
-          </div>
+          <app-single *ngIf="!peserta_grup" [dataPeserta]="dataPeserta"></app-single>
         </ng-template>
       </li>
       <li [ngbNavItem]="4">
