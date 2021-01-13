@@ -50,8 +50,7 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: 'Email Dan Password Tidak Cocok',
-          footer: '<a href>Why do I have this issue?</a>',
+          text: response.error.error[0].msg,
         });
       }
     });

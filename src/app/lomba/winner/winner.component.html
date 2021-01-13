@@ -8,7 +8,7 @@
     />
     <div class="card-body">
       <h5 class="card-title">Juara 1</h5>
-      <p class="card-text">Rp 500.000</p>
+      <p class="card-text">Rp {{ juara.juara1 }}</p>
     </div>
   </div>
   <div class="card">
@@ -20,7 +20,7 @@
     />
     <div class="card-body">
       <h5 class="card-title">Juara 2</h5>
-      <p class="card-text">Rp 300.000</p>
+      <p class="card-text">Rp {{ juara.juara2 }}</p>
     </div>
   </div>
   <div class="card">
@@ -32,12 +32,12 @@
     />
     <div class="card-body">
       <h5 class="card-title">Juara 3</h5>
-      <p class="card-text">Rp 200.000</p>
+      <p class="card-text">Rp {{ juara.juara3 }}</p>
     </div>
   </div>
 </div>
 
-<table class="table table-bordered">
+<table class="table table-bordered" *ngIf="is_finish === true">
   <thead>
     <tr>
       <th scope="col">Juara</th>
@@ -46,20 +46,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td></td>
-      <td></td>
+    <tr *ngFor="let winners of winner; let i = index">
+      <th *ngIf="i < 3" scope="row">{{ i + 1 }}</th>
+      <td *ngIf="i < 3">{{ winners.username }}</td>
+      <td *ngIf="i < 3">{{ winners.subDistirict }}</td>
     </tr>
   </tbody>
 </table>
+<div style="margin-bottom: 10%" *ngIf="is_finish === false">
+  <h4 style="text-align: center">Mohon Maaf Lomba Masih Berlangsung, Mohon Cek Setelah Lomba Selesai</h4>
+</div>

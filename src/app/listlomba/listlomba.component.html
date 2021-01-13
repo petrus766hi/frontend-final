@@ -3,20 +3,18 @@
     <li ngbDropdown class="nav-item">
       <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Lomba</a>
       <div ngbDropdownMenu>
-        <button ngbDropdownItem>Aktif</button>
-        <button ngbDropdownItem>Tidak Aktif</button>
-        <div class="dropdown-divider"></div>
+        <button ngbDropdownItem (click)="getIsActive(true)">Aktif</button>
+        <button ngbDropdownItem (click)="getIsActive(false)">Tidak Aktif</button>
       </div>
     </li>
     <li ngbDropdown class="nav-item">
       <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Sort</a>
       <div ngbDropdownMenu>
-        <button ngbDropdownItem>A-Z</button>
-        <button ngbDropdownItem>Z-A</button>
-        <div class="dropdown-divider"></div>
+        <button ngbDropdownItem (click)="getIsSort('desc')">A-Z</button>
+        <button ngbDropdownItem (click)="getIsSort('asc')">Z-A</button>
       </div>
     </li>
-    <li ngbDropdown class="nav-item">
+    <!-- <li ngbDropdown class="nav-item">
       <a href (click)="(false)" class="nav-link" ngbDropdownToggle>Area</a>
       <div ngbDropdownMenu>
         <button ngbDropdownItem>Setiabudi</button>
@@ -24,11 +22,19 @@
         <button ngbDropdownItem>Pancoran</button>
         <div class="dropdown-divider"></div>
       </div>
-    </li>
+    </li> -->
     <li ngbNavItem class="ml-auto">
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Cari Nama Lomba"
+          aria-label="Search"
+          [(ngModel)]="search"
+          name="search"
+          (input)="onSearch()"
+        />
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="onSearch()">Search</button>
       </form>
     </li>
   </ul>
@@ -54,6 +60,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{ turnament.NamaTournament }}</h5>
                   <p class="card-text">Area : {{ turnament.SubDistrict }}</p>
+                  <p class="card-text" [innerHTML]="finish(turnament.Is_finish)"></p>
                   <p class="card-text" [innerHTML]="status(turnament.Is_active)"></p>
                   <p class="card-text" [innerHTML]="avail(turnament.JumlahPeserta, turnament.Id_Peserta)"></p>
                   <p class="card-text">Jumlah Peserta : {{ turnament.JumlahPeserta }}</p>

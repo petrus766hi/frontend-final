@@ -14,8 +14,10 @@ import Swal from 'sweetalert2';
 })
 export class DetailPesertaComponent implements OnInit {
   id: any = '';
+  idParams: any = '';
   peserta: Peserta[];
   loading: boolean = true;
+  disableds: boolean = false;
 
   activityValues: number[] = [0, 100];
   UpdatescoreService: any;
@@ -26,6 +28,7 @@ export class DetailPesertaComponent implements OnInit {
     private ngxLoader: NgxUiLoaderService
   ) {
     this.id = this.activeroute.snapshot.queryParams.idTournament;
+    this.idParams = this.activeroute.snapshot.queryParams.idTournaments;
   }
 
   ngOnInit() {
@@ -42,23 +45,21 @@ export class DetailPesertaComponent implements OnInit {
         })
       )
       .subscribe((result) => {
+        console.log('xxx', result.data);
         this.ngxLoader.stop();
         this.peserta = result.data.tournaments.Id_Peserta;
+        this.disableds = result.data.tournaments.Is_finish;
       });
   }
-  updateScore(i: any, id: any) {
-    let score = {
-      fase1: this.peserta[i].fase1,
-      fase2: this.peserta[i].fase2,
-      fase3: this.peserta[i].fase3,
-    };
-    this.DetailPesertaService.updateScore(id, score)
+  updateScore() {
+    this.DetailPesertaService.updateScore(this.peserta)
       .pipe(
         finalize(() => {
           console.log('done');
         })
       )
-      .subscribe((result: { success: any; msg: any }) => {
+      .subscribe((result) => {
+        console.log('result', result);
         if (result.success) {
           this.ngxLoader.stop();
           Swal.fire({
@@ -74,6 +75,17 @@ export class DetailPesertaComponent implements OnInit {
           });
         }
       });
-    // this.router.navigate(['tournament/detailpeserta/updatescore/', id]);
+  }
+  updateWinner() {
+    let is_finish = { finish: true };
+    this.DetailPesertaService.updateWinner(this.idParams, this.peserta).subscribe((result) => {
+      if (result.success) {
+        this.DetailPesertaService.finish(this.idParams, is_finish).subscribe((res) => {
+          console.log('finish', res);
+        });
+      } else {
+        this.disableds = false;
+      }
+    });
   }
 }

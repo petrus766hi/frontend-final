@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../services/team.service';
+import { TeamService } from './team.service';
 import { environment } from '@env/environment';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as alertyfy from 'alertifyjs';
 
 @Component({
   selector: 'app-team',
@@ -15,31 +14,30 @@ export class TeamComponent implements OnInit {
   teamForm: FormGroup;
   public teamLomba: any = {};
   public loading = false;
-  id: any = '';
-  constructor(public teamservice: TeamService, public route: Router) {}
+  public id: any;
+  public getDataGroup: any = [];
+  constructor(public teamservice: TeamService, public route: Router) {
+    this.id = localStorage.getItem('id');
+  }
 
   ngOnInit() {
-    this.teamForm = new FormGroup({
-      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    this.getTeam();
+    this.route.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+  }
+
+  addTeam() {
+    this.teamservice.AddTeam(this.teamLomba, this.id).subscribe((response: any) => {
+      if (response.success) {
+        this.route.navigate(['team']);
+      }
     });
   }
 
-  updateTeam() {
-    this.loading = true;
-    this.teamservice.inputTeam(this.teamLomba, this.id).subscribe((response: any) => {
-      if (response.success) console.log('>>>>>>>>>', response);
-      //    {
-      //   alertyfy.success('Berhasil');
-      //     this.route.navigate(['profile']);
-      // }
+  getTeam() {
+    this.teamservice.GetTeam(this.id).subscribe((response: any) => {
+      this.getDataGroup = response.data.is_group;
     });
-  }
-
-  get username() {
-    return this.teamForm.get('username') as FormControl;
-  }
-  get phoneNumber() {
-    return this.teamForm.get('phoneNumber') as FormControl;
   }
 }

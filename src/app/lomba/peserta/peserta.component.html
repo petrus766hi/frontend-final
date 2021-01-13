@@ -1,5 +1,9 @@
-<ngb-accordion #acc="ngbAccordion">
-  <ngb-panel id="toggle-1" title="Peserta">
-    <ng-template ngbPanelContent> </ng-template>
-  </ngb-panel>
-</ngb-accordion>
+<div style="width: 150px; margin-bottom: 10%">
+  <ngb-accordion #acc="ngbAccordion">
+    <ngb-panel id="toggle-1" title="Ketua {{ team }} " style="width: 200px">
+      <ng-template ngbPanelContent>
+        <li *ngFor="let datas of data">{{ datas.name }}</li>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>

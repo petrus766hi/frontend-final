@@ -21,10 +21,12 @@ export class Home_DashboardComponent implements OnInit {
   public data: any = {};
   hidden_button_panitia = false;
   hidden_button_lomba = false;
-  lengthPeserta: number;
-  lengthPanitia: number;
+  lengthPeserta: Number;
+  lengthPanitia: Number;
   regform: FormGroup;
   public datas: any = [];
+  dataMaster: Array<any>;
+  lengthTournaments: Number;
   constructor(
     private quoteService: QuoteService,
     private modalService: NgbModal,
@@ -52,6 +54,7 @@ export class Home_DashboardComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
   ngOnInit() {
     this.checkRole();
     this.isLoading = true;
@@ -158,12 +161,15 @@ export class Home_DashboardComponent implements OnInit {
   }
   getPesertaLength() {
     this.quoteService.getDataPeserta().subscribe((result) => {
-      this.lengthPeserta = result.data.length;
+      const data = result.data.filter((e: any) => {
+        return e.role === 'peserta';
+      });
+      this.lengthPeserta = data.length;
     });
   }
   getLombaLength() {
     this.quoteService.getAllTournament().subscribe((result) => {
-      console.log('lomba', result);
+      this.lengthTournaments = result.length;
     });
   }
 }

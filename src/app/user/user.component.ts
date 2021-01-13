@@ -39,7 +39,10 @@ export class UserComponent implements OnInit {
         })
       )
       .subscribe((result) => {
-        this.customers = result.data;
+        const data = result.data.filter((e: any) => {
+          return e.role === 'peserta';
+        });
+        this.customers = data;
         this.ngxLoader.stop();
       });
   }

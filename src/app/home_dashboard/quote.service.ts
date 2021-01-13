@@ -14,6 +14,9 @@ export interface RandomQuoteContext {
   providedIn: 'root',
 })
 export class QuoteService {
+  getRandomQuote(arg0: { category: string }) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private httpClient: HttpClient) {}
 
   getAllPanitia(): Observable<any> {
@@ -59,7 +62,13 @@ export class QuoteService {
     );
   }
   getAllTournament(): Observable<any> {
-    return this.httpClient.get(`${endpoint}api/tournament/tournament/`).pipe(
+    return this.httpClient.get(`${endpoint}/api/tournament/tournament/`).pipe(
+      map((body: any) => body.data.tournaments),
+      catchError((err) => of(err))
+    );
+  }
+  getMasterCodeTournament(): Observable<any> {
+    return this.httpClient.get(`${endpoint}/api/getmasterlomba`).pipe(
       map((body: any) => body),
       catchError((err) => of(err))
     );

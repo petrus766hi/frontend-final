@@ -26,26 +26,38 @@
         <a ngbNavLink>Pendaftaran</a>
         <ng-template ngbNavContent>
           <p [innerHTML]="detail.Informasi"></p>
-          <button type="button" class="btn btn-primary" (click)="registerLomba(detail)">Daftar</button><br />
+          <button type="button" class="btn btn-primary" (click)="registerLomba(detail)" [disabled]="is_finish == true">
+            Daftar</button
+          ><br />
           <br />
         </ng-template>
       </li>
       <li [ngbNavItem]="3">
         <a ngbNavLink>Peserta</a>
         <ng-template ngbNavContent>
-          <app-peserta></app-peserta>
+          <div class="row" *ngIf="peserta_grup">
+            <div class="col-md-2" *ngFor="let group of is_group; let i = index" [attr.data-index]="i">
+              <app-peserta [data]="group.is_group" [team]="group.username"></app-peserta>
+            </div>
+          </div>
+          <app-single *ngIf="!peserta_grup" [dataPeserta]="dataPeserta"></app-single>
         </ng-template>
       </li>
       <li [ngbNavItem]="4">
         <a ngbNavLink>Pertandingan</a>
         <ng-template ngbNavContent>
-          <app-bracket [dataPeserta]="dataPeserta" [jumlahPeserta]="jumlahPeserta"></app-bracket>
+          <app-bracket
+            *ngIf="type_tournament"
+            [dataPeserta]="dataPeserta"
+            [jumlahPeserta]="jumlahPeserta"
+          ></app-bracket>
+          <app-free-all *ngIf="!type_tournament" [dataPeserta]="dataPeserta"></app-free-all>
         </ng-template>
       </li>
       <li [ngbNavItem]="5">
         <a ngbNavLink>Pemenang</a>
         <ng-template ngbNavContent>
-          <app-winner></app-winner>
+          <app-winner [winner]="winner" [juara]="juara" [is_finish]="is_finish"></app-winner>
         </ng-template>
       </li>
     </ul>

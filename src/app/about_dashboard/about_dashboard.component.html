@@ -47,7 +47,9 @@
                 <li class="list-group-item" [innerHTML]="status(tournament.Is_active)"></li>
               </ul>
               <div class="d-grid gap-1 d-md-flex justify-content-md-center">
-                <Button class="btn btn-primary me-md-2" (click)="list(tournament.NamaTournament)">Peserta</Button>
+                <Button class="btn btn-primary me-md-2" (click)="list(tournament.NamaTournament, tournament._id)"
+                  >Peserta</Button
+                >
                 <Button class="btn btn-success" (click)="activeTournament(tournament._id)">Aktifkan</Button>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-peserta',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PesertaComponent implements OnInit {
   constructor() {}
-
-  ngOnInit(): void {}
+  @Input() data: {};
+  @Input() team: '';
+  ngOnInit(): void {
+    console.log('data', this.data);
+  }
 }

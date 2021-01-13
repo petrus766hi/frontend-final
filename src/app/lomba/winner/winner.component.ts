@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '@env/environment';
 import { WinnerService } from '../../services/winner.service';
@@ -11,13 +11,16 @@ import { WinnerService } from '../../services/winner.service';
 export class WinnerComponent implements OnInit {
   public winnerLomba: any = {};
   id: any = '';
+  @Input() winner: Array<any>;
+  @Input() juara: any;
+  @Input() is_finish: any;
   constructor(public route: Router, public winnerservice: WinnerService) {}
 
-  ngOnInit(): void {}
-
-  updateWinner() {
-    this.winnerservice.inputWinner(this.winnerLomba, this.id).subscribe((response: any) => {
-      if (response.success) console.log('>>>>>>>>>', response);
-    });
+  ngOnInit(): void {
+    console.log('juara', this.juara.juara1);
   }
+
+  // updateWinner() {
+  //   this.winnerservice.inputWinner(this.winnerLomba, this.id).subscribe((response: any) => {});
+  // }
 }

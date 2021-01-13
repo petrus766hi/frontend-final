@@ -89,8 +89,8 @@ export class About_DashboardComponent implements OnInit {
     }
   }
 
-  list(id: any) {
-    this.router.navigate(['tournament/detailpeserta'], { queryParams: { idTournament: id } });
+  list(id: any, idParams: any) {
+    this.router.navigate(['tournament/detailpeserta'], { queryParams: { idTournament: id, idTournaments: idParams } });
   }
   pageChanged(event: any) {
     this.page = event;

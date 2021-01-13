@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { DetailPesertaRoutingModule } from './detailPeserta-routing.module';
@@ -41,5 +41,6 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     NgxUiLoaderModule,
   ],
   declarations: [DetailPesertaComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DetailPesertaModule {}

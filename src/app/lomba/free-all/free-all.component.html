@@ -1,0 +1,15 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Detail Pertadingan Free All</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataPeserta">
+      <td>
+        Nama Peserta: {{ data.name.toUpperCase() }} || Pertandingan 1: {{ data.fase1 }} || Pertandingan 2:
+        {{ data.fase2 }}
+      </td>
+    </tr>
+  </tbody>
+</table>

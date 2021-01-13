@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 
 const routes = {
   getAll: () => `https://backendsfinal.herokuapp.com/api/tournament/tournament/`,
+  sort: (sort: any) => `https://backendsfinal.herokuapp.com/api/tournament/tournament/?sortBy=${sort}`,
 };
 
 @Injectable({
@@ -16,6 +17,12 @@ export class ListLombaService {
   getAllTournament(): Observable<any> {
     return this.httpClient.get(routes.getAll()).pipe(
       map((body: any) => body.data),
+      catchError(() => of('err'))
+    );
+  }
+  getAllTournamentSort(sort: any): Observable<any> {
+    return this.httpClient.get(routes.sort(sort)).pipe(
+      map((body: any) => body.data.tournaments),
       catchError(() => of('err'))
     );
   }

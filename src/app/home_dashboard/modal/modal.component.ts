@@ -26,9 +26,13 @@ export class ModalComponent implements OnInit {
     JuaraTournament3: '',
     Informasi: '',
     Pendaftaran: '',
+    Juara1: '',
+    Juara2: '',
+    Juara3: '',
   };
   datas: any = [];
   register: boolean;
+  dataMaster: Array<any>;
 
   config: AngularEditorConfig = {
     editable: true,
@@ -68,13 +72,7 @@ export class ModalComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-
-    this.modalForm = new FormGroup({
-      namalomba: new FormControl('', [Validators.required]),
-      typelomba: new FormControl('', [Validators.required]),
-      jumlahpeserta: new FormControl('', [Validators.required]),
-      usiapeserta: new FormControl('', [Validators.required]),
-    });
+    this.getMaster();
   }
   open(content: any) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', size: 'xl' }).result.then(
@@ -97,6 +95,7 @@ export class ModalComponent implements OnInit {
   }
 
   createTournament = () => {
+    console.log('xxx', this.dataTournament);
     this.ngxLoader.start();
     if (this.register) {
       this.ngxLoader.stop();
@@ -149,16 +148,9 @@ export class ModalComponent implements OnInit {
     this.quoteService.UpdateRegisterPanitia(id, data).subscribe((res) => {});
   }
 
-  get namalomba() {
-    return this.modalForm.get('namalomba') as FormControl;
-  }
-  get typelomba() {
-    return this.modalForm.get('typelomba') as FormControl;
-  }
-  get jumlahpeserta() {
-    return this.modalForm.get('jumlahpeserta') as FormControl;
-  }
-  get usiapeserta() {
-    return this.modalForm.get('usiapeserta') as FormControl;
+  getMaster() {
+    this.quoteService.getMasterCodeTournament().subscribe((result) => {
+      this.dataMaster = result.data;
+    });
   }
 }

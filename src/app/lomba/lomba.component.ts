@@ -21,6 +21,17 @@ export class LombaComponent {
   jumlahPeserta: number;
   dataPeserta: Array<any>;
   response: Boolean = false;
+  is_group: Array<any>;
+  data: Array<any>;
+  winner: Array<any>;
+  juara: any = {
+    juara1: '',
+    juara2: '',
+    juara3: '',
+  };
+  type_tournament: Boolean;
+  is_finish: Boolean;
+  peserta_grup: Boolean;
   constructor(private ActivatedRoutes: ActivatedRoute, private LombaService: LombaService, private router: Router) {
     this.query = this.ActivatedRoutes.snapshot.paramMap.get('names');
   }
@@ -40,7 +51,34 @@ export class LombaComponent {
         this.jumlahPeserta = res.tournaments.JumlahPeserta;
         this.detail = res.tournaments;
         this.dataPeserta = res.tournaments.Id_Peserta;
+        this.is_group = res.tournaments.Is_group;
+        this.winner = res.tournaments.Winner;
+        this.juara = {
+          juara1: res.tournaments.Juara1,
+          juara2: res.tournaments.Juara2,
+          juara3: res.tournaments.Juara3,
+        };
+        this.typeTournaments(res.tournaments.TypeTournament);
+        this.pesertaTournaments(res.tournaments.TypeTournament);
+        this.is_finish = res.tournaments.Is_finish;
       });
+  }
+
+  typeTournaments(type: any) {
+    if (type == 'Single' || type == 'Grup') {
+      return (this.type_tournament = true);
+      // console.log('true');
+    } else {
+      return (this.type_tournament = false);
+      // console.log('false');
+    }
+  }
+  pesertaTournaments(type: any) {
+    if (type === 'Grup') {
+      return (this.peserta_grup = true);
+    } else {
+      return (this.peserta_grup = false);
+    }
   }
   getPeserta() {
     let id = localStorage.getItem('id');
@@ -93,7 +131,6 @@ export class LombaComponent {
               })
             )
             .subscribe((res) => {
-              console.log('xx', res);
               if (res.success) {
                 this.loading = false;
                 this.UpdatePesertaRegister();

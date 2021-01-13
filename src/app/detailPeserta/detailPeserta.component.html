@@ -52,31 +52,43 @@
       </th> -->
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-peserta let-i="rowIndex">
+  <ng-template pTemplate="body" let-peserta>
     <tr>
       <td>
         {{ peserta.name }}
       </td>
       <td>
-        <input [(ngModel)]="peserta.fase1" style="width: 60px" type="number" />
+        <input [(ngModel)]="peserta.fase1" style="width: 60px" type="number" [disabled]="disableds" />
       </td>
       <td>
-        <input [(ngModel)]="peserta.fase2" style="width: 60px" type="number" />
+        <input [(ngModel)]="peserta.fase2" style="width: 60px" type="number" [disabled]="disableds" />
       </td>
       <td>
-        <input [(ngModel)]="peserta.fase3" style="width: 60px" type="number" />
+        <input [(ngModel)]="peserta.fase3" style="width: 60px" type="number" [disabled]="disableds" />
       </td>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="footer">
     <tr>
-      <td colspan="3" class="p-text-right">Totals</td>
-      <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded"></button>
+      <td colspan="4" class="p-text-left">
+        <button
+          pButton
+          type="button"
+          label="Update Score"
+          [disabled]="peserta.length == 0 || disableds"
+          (click)="updateScore()"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Finish Tournament"
+          [disabled]="peserta.length == 0 || disableds"
+          (click)="updateWinner()"
+        ></button>
+      </td>
     </tr>
   </ng-template>
-
-  <!-- (click)="updateScore(i, peserta._id)" -->
 
   <ng-template pTemplate="emptymessage">
     <tr>
