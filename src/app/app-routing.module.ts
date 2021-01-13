@@ -16,6 +16,7 @@ const routes: Routes = [
   Shell.childRoutes([
     { path: 'lomba/:names', loadChildren: () => import('./lomba/lomba.module').then((m) => m.LombaModule) },
   ]),
+  Shell.childRoutes([{ path: 'table', loadChildren: () => import('./table/table.module').then((m) => m.TableModule) }]),
   Shell.childRoutes([{ path: 'team', loadChildren: () => import('./team/team.module').then((m) => m.TeamModule) }]),
   Shell.childRoutes([
     { path: 'listlomba', loadChildren: () => import('./listlomba/listlomba.module').then((m) => m.ListLombaModule) },
